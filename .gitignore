@@ -1,0 +1,5 @@
+# tooling (do not commit)
+.claude/
+.cursor/
+.cursorrules
+.aider*
