@@ -28,6 +28,13 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 | **cachekit** | C (C11), POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
 | **Rift** | Python 3.12, pytest | [GitHub](https://github.com/jmahotiedu/rift) |
 | **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
+| **workflow-orchestrator** | TypeScript, Node.js, Postgres, Redis Streams, React | [GitHub](https://github.com/jmahotiedu/workflow-orchestrator) |
+
+### workflow-orchestrator highlights
+
+- Distributed execution + retries/dead-letter
+- Scheduling + idempotent triggers
+- Observability + incident drill/postmortem
 
 ## Skills
 
