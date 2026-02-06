@@ -32,6 +32,7 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 
 ## Open Source Contributions
 
+- **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) for [issue #50](https://github.com/sipeed/picoclaw/issues/50): fixed OpenAI device-code OAuth parsing for string/numeric `interval` responses, added regression tests, and improved headless login guidance.
 - **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258) for [issue #1069](https://github.com/databricks/databricks-sdk-py/issues/1069): fixed `Config` subclass attribute discovery/caching so inherited `ConfigAttribute` fields resolve correctly, and added regression coverage.
 - **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) for [issue #5243](https://github.com/bloomberg/comdb2/issues/5243): fixed `cdb2jdbc` metadata cursor invalidation by isolating version lookup from active `getTables()` result sets and added a regression test.
 - **google/langextract** - [PR #359](https://github.com/google/langextract/pull/359) for [issue #353](https://github.com/google/langextract/issues/353): fixed Gemini batch cache hashing for Enum/dataclass settings and added regression tests for deterministic hashing.
