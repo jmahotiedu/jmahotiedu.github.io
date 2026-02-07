@@ -36,6 +36,14 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 - Scheduling + idempotent triggers
 - Observability + incident drill/postmortem
 
+## Pull Request Contributions
+
+- **databricks/cli** - [PR #4495](https://github.com/databricks/cli/pull/4495): fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with `WorkspaceClient`.
+- **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258): fixed `Config` subclass attribute discovery/caching for inherited `ConfigAttribute` fields with regression coverage.
+- **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731): preserved JDBC metadata cursors by isolating version lookup from active `getTables()` result-set flow.
+- **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56): fixed OpenAI device-code auth parsing for string/numeric poll intervals with targeted tests and clearer headless guidance.
+- **google/langextract** - [PR #359](https://github.com/google/langextract/pull/359): fixed Gemini batch cache hashing for Enum/dataclass settings with deterministic regression tests.
+
 ## Skills
 
 **Languages:** C#, TypeScript, Java, Python, C, C++  
