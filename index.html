@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jared Mahotiere - Software Engineer</title>
-  <meta name="description" content="Entry-level SWE: .NET, full-stack web, embedded systems. Purdue EET. Nucor intern. Shipped production Next.js, Redis-like cache, interpreter, real-time Kanban." />
+  <title>Jared Mahotiere - Systems / Backend Engineer</title>
+  <meta name="description" content="Entry-level systems and backend engineer. Built a distributed workflow orchestrator, Redis-protocol cache server in C, and ESP32 telemetry stack. Internship impact: reduced SQL report runtimes 70-90%." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -187,6 +187,7 @@
       max-width: 640px;
       margin: 0;
     }
+    .about p + p { margin-top: 0.85rem; }
 
     /* ----- Experience ----- */
     .exp-item {
@@ -325,20 +326,21 @@
   <main>
     <nav>
       <ul>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">Summary</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#pr-contributions">PRs</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#leadership">Leadership</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
     <header class="hero">
-      <p class="tag">Software Engineer</p>
+      <p class="tag">Systems / Backend Engineer</p>
       <h1>Jared Mahotiere</h1>
-      <p class="sub">.NET & full-stack web, embedded systems. Real-time dashboards, SQL optimization, production Next.js. Purdue EET '26.</p>
+      <p class="sub">Entry-level systems/backend SWE. Built distributed orchestration, a Redis-protocol cache in C, and embedded telemetry systems. Reduced SQL report runtimes 70-90% in production internship work.</p>
       <div class="links">
         <a class="primary" href="https://linkedin.com/in/jared-mahotiere" target="_blank" rel="noopener">LinkedIn</a>
         <a class="secondary" href="https://github.com/jmahotiedu" target="_blank" rel="noopener">GitHub</a>
@@ -346,9 +348,10 @@
     </header>
 
     <section id="about" class="about">
-      <p class="section-label">About</p>
-      <h2>Background</h2>
-      <p class="reveal">Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization 70-90%, CI/testing) plus embedded systems (ESP32, FreeRTOS, binary protocols). Shipped production Next.js disaster-relief site; portfolio includes Redis-like cache (C), language interpreter (Python), real-time Kanban (Next.js/PostgreSQL), and ESP32 telemetry logger.</p>
+      <p class="section-label">Summary</p>
+      <h2>Focus</h2>
+      <p class="reveal">Entry-level SWE (systems + backend). Built a distributed orchestration engine, a Redis-protocol cache server in C, and an embedded telemetry system. Internship impact: reduced SQL report runtimes <strong>70-90%</strong> via query/index optimization.</p>
+      <p class="reveal">Core focus: distributed systems, concurrency, networking, and performance optimization.</p>
     </section>
 
     <section id="experience">
@@ -358,58 +361,67 @@
         <h3>Nucor Corporation - Software / Automation Engineering Intern</h3>
         <p class="meta">Darlington, SC | May-Aug 2024; May-Aug 2025</p>
         <ul>
-          <li>Shipped Blazor/.NET real-time operator dashboards; improved process visibility with resilient UI state and consolidated KPI views.</li>
-          <li>Built C#/.NET services integrating SQL Server and QMOS; cut critical report runtimes by 70-90% via indexing and query refactors.</li>
-          <li>Delivered automated reporting/alerting with Quartz.NET (idempotency, retry/backoff) and migrated legacy Visual Basic apps to .NET/Blazor.</li>
-          <li>Added ~240 unit/integration tests (xUnit) and CI quality gates; health checks and structured logging for deployment confidence.</li>
+          <li>Reduced critical report runtimes by <strong>70-90%</strong> by indexing and query refactors in C#/.NET services integrating SQL Server and QMOS for production dashboards.</li>
+          <li>Shipped Blazor/.NET real-time operator dashboards with resilient UI state and consolidated KPI views to improve process visibility for plant operators.</li>
+          <li>Delivered automated reporting and alerting with Quartz.NET idempotent jobs plus retry/backoff, and migrated legacy Visual Basic tools to .NET/Blazor.</li>
+          <li>Added ~240 unit/integration tests (xUnit), CI quality gates, health checks, and structured logging to improve deployment confidence.</li>
         </ul>
       </div>
     </section>
 
     <section id="projects">
       <p class="section-label">Projects</p>
-      <h2>What I've Built</h2>
+      <h2>Selected Work</h2>
       <div class="projects-grid">
+        <a href="https://github.com/jmahotiedu/cachekit" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>cachekit</h3>
+          <p class="stack">C (C11) | POSIX | TCP | RESP</p>
+          <p>Built a Redis-like in-memory cache server in C with a select-loop TCP engine; benchmark harness runs 10,000 SET/GET pairs per trial.</p>
+          <ul>
+            <li>Implemented Robin Hood hashing + approximate LRU eviction with O(1) average key access.</li>
+            <li>Added TTL expiration, RESP command parsing, and RDB snapshot load/save with ASan + Valgrind CI coverage.</li>
+          </ul>
+          <span class="link-hint">GitHub -&gt;</span>
+        </a>
         <a href="https://github.com/jmahotiedu/workflow-orchestrator" target="_blank" rel="noopener" class="project-card reveal">
           <h3>workflow-orchestrator</h3>
           <p class="stack">TypeScript | Node.js | Postgres | Redis Streams | React</p>
-          <p>Distributed workflow orchestration platform built for reliability engineering depth.</p>
+          <p>Built distributed workflow orchestration with lease/heartbeat recovery; benchmarked 25 runs in 15.94s (1.57 runs/s) with 0 failures.</p>
           <ul>
-            <li>Distributed execution + retries/dead-letter</li>
-            <li>Scheduling + idempotent triggers</li>
-            <li>Observability + incident drill/postmortem</li>
+            <li>Implemented DAG validation, Redis Streams consumer groups, and Postgres durable run/task state.</li>
+            <li>Added retry/backoff, dead-letter routing, and idempotency-key dedupe for reliability hardening.</li>
+          </ul>
+          <span class="link-hint">GitHub -&gt;</span>
+        </a>
+        <a href="https://github.com/jmahotiedu/telemetry-node" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Telemetry Node</h3>
+          <p class="stack">ESP32 | FreeRTOS | C | Python</p>
+          <p>Built ESP32 telemetry logger streaming 25-byte UART frames (20-byte payload + CRC16) for 9 sensor fields with Python CSV decode tooling.</p>
+          <ul>
+            <li>Implemented fixed-rate FreeRTOS sampling for MPU6050 accel/gyro plus temperature and battery channels.</li>
+            <li>Added deterministic protocol fixtures and CI checks for firmware build + host decoder validation.</li>
+          </ul>
+          <span class="link-hint">GitHub -&gt;</span>
+        </a>
+        <a href="https://github.com/jmahotiedu/syncboard" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>syncboard</h3>
+          <p class="stack">Next.js 15 | Socket.io | PostgreSQL | Prisma | NextAuth</p>
+          <p>Built real-time collaborative Kanban with optimistic UI + Socket.IO sync for 4 mutation paths (create/move/update/delete).</p>
+          <ul>
+            <li>Implemented reconnect/offline handling, presence heartbeat tracking, and last-write-wins conflict merge logic.</li>
+            <li>Delivered REST endpoints with Zod validation on a Next.js + Prisma/Postgres + NextAuth stack.</li>
           </ul>
           <span class="link-hint">GitHub -&gt;</span>
         </a>
         <a href="https://jmahotiedu-help-westmoreland.vercel.app" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Help Westmoreland</h3>
           <p class="stack">Next.js 16 | React 19 | TypeScript | Tailwind v4</p>
-          <p>11 responsive pages, WCAG 2.1 AA, Donorbox, Formspree, GA4. SEO: JSON-LD, sitemap, Open Graph. Vercel + optional AWS.</p>
+          <p>Shipped production disaster-relief platform with 3 intake flows (contact/volunteer/partner), donation integration, and accessibility-first UX.</p>
+          <ul>
+            <li>Implemented Donorbox + Formspree workflow plumbing and GA4 event instrumentation.</li>
+            <li>Built SEO baseline with JSON-LD, sitemap/robots automation, and Open Graph/Twitter cards.</li>
+          </ul>
           <span class="link-hint">View live -&gt;</span>
-        </a>
-        <a href="https://github.com/jmahotiedu/telemetry-node" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>Telemetry Node</h3>
-          <p class="stack">ESP32 | FreeRTOS | C | Python</p>
-          <p>Real-time embedded telemetry: fixed-rate sampling, MPU6050 IMU, binary wire protocol, Python host tool, CI with PlatformIO & pytest.</p>
-          <span class="link-hint">GitHub -&gt;</span>
-        </a>
-        <a href="https://github.com/jmahotiedu/syncboard" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>syncboard</h3>
-          <p class="stack">Next.js 15 | Socket.io | PostgreSQL | Prisma | NextAuth</p>
-          <p>Real-time collaborative Kanban: WebSocket sync, drag-and-drop, optimistic updates, GitHub OAuth, offline queue. CI on push.</p>
-          <span class="link-hint">GitHub -&gt;</span>
-        </a>
-        <a href="https://github.com/jmahotiedu/cachekit" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>cachekit</h3>
-          <p class="stack">C (C11) | POSIX | RESP</p>
-          <p>Redis-like in-memory cache: TCP event loop, RESP, strings/lists/hashes, TTL, LRU, RDB. Custom Robin Hood hash table. CI: ASan, Valgrind.</p>
-          <span class="link-hint">GitHub -&gt;</span>
-        </a>
-        <a href="https://github.com/jmahotiedu/rift" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>Rift</h3>
-          <p class="stack">Python 3.12 | pytest</p>
-          <p>Tree-walking interpreter: lexer, recursive-descent parser, resolver, closures, classes with inheritance, REPL. pytest, mypy, ruff.</p>
-          <span class="link-hint">GitHub -&gt;</span>
         </a>
       </div>
     </section>
@@ -455,28 +467,33 @@
       <div class="reveal">
         <p class="skill-cat">Languages</p>
         <div class="skills-wrap">
-          <span class="skill">C#</span><span class="skill">TypeScript</span><span class="skill">Java</span><span class="skill">Python</span><span class="skill">C</span><span class="skill">C++</span>
+          <span class="skill">C</span><span class="skill">C#</span><span class="skill">TypeScript</span><span class="skill">Python</span><span class="skill">Java</span>
         </div>
-        <p class="skill-cat">Frontend</p>
+        <p class="skill-cat">Systems</p>
         <div class="skills-wrap">
-          <span class="skill">Next.js</span><span class="skill">React</span><span class="skill">Tailwind</span><span class="skill">Accessibility</span><span class="skill">SEO</span>
+          <span class="skill">POSIX</span><span class="skill">Networking</span><span class="skill">Concurrency</span><span class="skill">Redis Protocol (RESP)</span>
+        </div>
+        <p class="skill-cat">Backend</p>
+        <div class="skills-wrap">
+          <span class="skill">.NET</span><span class="skill">Node.js</span><span class="skill">SQL Server</span><span class="skill">PostgreSQL</span><span class="skill">REST</span><span class="skill">gRPC</span>
+        </div>
+        <p class="skill-cat">Infra</p>
+        <div class="skills-wrap">
+          <span class="skill">Docker</span><span class="skill">AWS</span><span class="skill">CI/CD</span><span class="skill">GitHub Actions</span>
         </div>
         <p class="skill-cat">Embedded</p>
         <div class="skills-wrap">
-          <span class="skill">ESP32</span><span class="skill">FreeRTOS</span><span class="skill">Arduino</span><span class="skill">I2C</span><span class="skill">ADC</span><span class="skill">PID</span><span class="skill">PWM</span>
+          <span class="skill">ESP32</span><span class="skill">FreeRTOS</span><span class="skill">I2C</span><span class="skill">UART</span><span class="skill">Driver Development</span><span class="skill">Binary Protocols</span>
         </div>
-        <p class="skill-cat">Backend / DB</p>
-        <div class="skills-wrap">
-          <span class="skill">.NET</span><span class="skill">ASP.NET Core</span><span class="skill">Blazor</span><span class="skill">REST</span><span class="skill">gRPC</span><span class="skill">SQL Server</span><span class="skill">PostgreSQL</span><span class="skill">Prisma</span><span class="skill">Redis</span><span class="skill">NextAuth</span><span class="skill">Socket.io</span>
-        </div>
-        <p class="skill-cat">Cloud / DevOps</p>
-        <div class="skills-wrap">
-          <span class="skill">AWS</span><span class="skill">Docker</span><span class="skill">GitHub Actions</span>
-        </div>
-        <p class="skill-cat">Testing</p>
-        <div class="skills-wrap">
-          <span class="skill">xUnit</span><span class="skill">pytest</span>
-        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <p class="section-label">Education</p>
+      <h2>Academics</h2>
+      <div class="exp-item reveal">
+        <h3>Purdue University</h3>
+        <p class="meta">B.S. Electrical Engineering Technology, Computer Engineering Technology | Expected May 2026</p>
       </div>
     </section>
 
@@ -498,7 +515,7 @@
     <section id="contact" class="contact">
       <p class="section-label">Contact</p>
       <h2>Get in Touch</h2>
-      <p class="reveal">Bear, DE | Open to roles in software engineering, full-stack, and embedded systems.</p>
+      <p class="reveal">Bear, DE | Open to systems and backend software engineering roles.</p>
       <div class="channels reveal">
         <a href="https://linkedin.com/in/jared-mahotiere" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/jmahotiedu" target="_blank" rel="noopener">GitHub</a>
@@ -508,7 +525,7 @@
     </section>
 
     <footer>
-      <p>Purdue University | B.S. Electrical Engineering Technology, Computer Engineering Technology | Expected May 2026</p>
+      <p>Built with HTML/CSS/JS | Updated for systems/backend hiring signal</p>
     </footer>
   </main>
 
