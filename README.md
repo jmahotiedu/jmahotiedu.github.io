@@ -38,6 +38,7 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 
 ## Pull Request Contributions
 
+- **databricks/cli** - [PR #4504](https://github.com/databricks/cli/pull/4504) _(Status: Open)_: fixed non-bundle auth resolution so workspace commands no longer implicitly use bundle default targets over environment credentials; preserved explicit target behavior and added regression tests.
 - **databricks/cli** - [PR #4495](https://github.com/databricks/cli/pull/4495) _(Status: Closed)_: fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with `WorkspaceClient`.
 - **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258) _(Status: Open)_: fixed `Config` subclass attribute discovery/caching for inherited `ConfigAttribute` fields with regression coverage.
 - **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) _(Status: Open)_: preserved JDBC metadata cursors by isolating version lookup from active `getTables()` result-set flow.
