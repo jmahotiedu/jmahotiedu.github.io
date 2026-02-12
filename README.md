@@ -30,6 +30,10 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 | **Help Westmoreland** | Next.js 16, React 19, TypeScript, Tailwind v4 | [Live](https://jmahotiedu-help-westmoreland.vercel.app) |
 | **Rift** | Python 3.12, pytest | [GitHub](https://github.com/jmahotiedu/rift) |
 
+## Open Source Contributions
+
+- **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) for [issue #5243](https://github.com/bloomberg/comdb2/issues/5243): fixed `cdb2jdbc` metadata cursor invalidation by isolating version lookup from active `getTables()` result sets and added a regression test.
+
 ### workflow-orchestrator highlights
 
 - Distributed execution + retries/dead-letter
