@@ -24,18 +24,11 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 | Project | Stack | Link |
 |--------|--------|------|
 | **workflow-orchestrator** | TypeScript, Node.js, Postgres, Redis Streams, React | [GitHub](https://github.com/jmahotiedu/workflow-orchestrator) |
-| **Telemetry Node** | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
-| **cachekit** | C (C11), POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
-| **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
 | **Help Westmoreland** | Next.js 16, React 19, TypeScript, Tailwind v4 | [Live](https://jmahotiedu-help-westmoreland.vercel.app) |
+| **Telemetry Node** | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
+| **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
+| **cachekit** | C (C11), POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
 | **Rift** | Python 3.12, pytest | [GitHub](https://github.com/jmahotiedu/rift) |
-
-## Open Source Contributions
-
-- **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) for [issue #50](https://github.com/sipeed/picoclaw/issues/50): fixed OpenAI device-code OAuth parsing for string/numeric `interval` responses, added regression tests, and improved headless login guidance.
-- **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258) for [issue #1069](https://github.com/databricks/databricks-sdk-py/issues/1069): fixed `Config` subclass attribute discovery/caching so inherited `ConfigAttribute` fields resolve correctly, and added regression coverage.
-- **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) for [issue #5243](https://github.com/bloomberg/comdb2/issues/5243): fixed `cdb2jdbc` metadata cursor invalidation by isolating version lookup from active `getTables()` result sets and added a regression test.
-- **google/langextract** - [PR #359](https://github.com/google/langextract/pull/359) for [issue #353](https://github.com/google/langextract/issues/353): fixed Gemini batch cache hashing for Enum/dataclass settings and added regression tests for deterministic hashing.
 
 ### workflow-orchestrator highlights
 
