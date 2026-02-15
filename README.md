@@ -8,7 +8,7 @@
 
 ## About
 
-Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization 70-90%, CI/testing), data science & engineering (Kafka, Spark, Airflow, ML forecasting), plus embedded systems (ESP32, FreeRTOS, binary protocols). Shipped production Next.js disaster-relief site; portfolio includes a live ML forecasting dashboard on AWS, a real-time streaming ETL pipeline, Redis-like cache (C), language interpreter (Python), real-time Kanban (Next.js/PostgreSQL), and ESP32 telemetry logger.
+Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization 70-90%, CI/testing), data science & engineering (Kafka, Spark, Airflow, ML forecasting), plus embedded systems (ESP32, FreeRTOS, binary protocols). Shipped production Next.js disaster-relief site; portfolio includes a live ML forecasting dashboard on AWS, a real-time streaming ETL pipeline, SLO-driven feature flag platform, Redis-like cache (C), real-time Kanban (Next.js/PostgreSQL), and ESP32 telemetry logger.
 
 ## Experience
 
@@ -30,7 +30,7 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 | **Telemetry Node** | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
 | **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
 | **Help Westmoreland** | Next.js 16, React 19, TypeScript, Tailwind v4 | [Live](https://jmahotiedu-help-westmoreland.vercel.app) |
-| **Rift** | Python 3.12, pytest | [GitHub](https://github.com/jmahotiedu/rift) |
+| **Feature Flag Platform** | TypeScript, Node.js, Redis, React | [GitHub](https://github.com/jmahotiedu/feature-flag-platform) |
 
 ### Retail Sales Forecasting highlights
 
@@ -51,6 +51,13 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 - Distributed execution + retries/dead-letter
 - Scheduling + idempotent triggers
 - Observability + incident drill/postmortem
+
+### Feature Flag Platform highlights
+
+- Multi-tenant control-plane with deterministic rule + percentage rollout evaluation
+- JavaScript SDK with local cache and refresh loop; admin UI for flag CRUD/publish
+- Idempotency middleware, RBAC, tenant quota controls, and audit logging
+
 
 ## Pull Request Contributions
 
