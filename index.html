@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jared Mahotiere - Systems / Backend Engineer</title>
-  <meta name="description" content="Entry-level systems and backend engineer. Built a distributed workflow orchestrator, Redis-protocol cache server in C, and ESP32 telemetry stack. Internship impact: reduced SQL report runtimes 70-90%." />
+  <title>Jared Mahotiere - Software Engineer</title>
+  <meta name="description" content="Software engineer: .NET, full-stack web, data engineering, and embedded systems. Built ML forecasting dashboards, real-time streaming pipelines, distributed orchestration, and embedded telemetry. Internship impact: reduced SQL report runtimes 70-90%." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -338,9 +338,9 @@
     </nav>
 
     <header class="hero">
-      <p class="tag">Systems / Backend Engineer</p>
+      <p class="tag">Software Engineer</p>
       <h1>Jared Mahotiere</h1>
-      <p class="sub">Entry-level systems/backend SWE. Built distributed orchestration, a Redis-protocol cache in C, and embedded telemetry systems. Reduced SQL report runtimes 70-90% in production internship work.</p>
+      <p class="sub">.NET and full-stack web, data science &amp; engineering, embedded systems. Shipped ML forecasting dashboards on AWS, real-time streaming pipelines, distributed orchestration, and production .NET services. Reduced SQL report runtimes 70-90%.</p>
       <div class="links">
         <a class="primary" href="https://linkedin.com/in/jared-mahotiere" target="_blank" rel="noopener">LinkedIn</a>
         <a class="secondary" href="https://github.com/jmahotiedu" target="_blank" rel="noopener">GitHub</a>
@@ -350,8 +350,8 @@
     <section id="about" class="about">
       <p class="section-label">Summary</p>
       <h2>Focus</h2>
-      <p class="reveal">Entry-level SWE (systems + backend). Built a distributed orchestration engine, a Redis-protocol cache server in C, and an embedded telemetry system. Internship impact: reduced SQL report runtimes <strong>70-90%</strong> via query/index optimization.</p>
-      <p class="reveal">Core focus: distributed systems, concurrency, networking, and performance optimization.</p>
+      <p class="reveal">Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization 70-90%, CI/testing), data science &amp; engineering (Kafka, Spark, Airflow, ML forecasting), plus embedded systems (ESP32, FreeRTOS, binary protocols). Shipped production Next.js disaster-relief site; portfolio includes a live ML forecasting dashboard on AWS, a real-time streaming ETL pipeline, Redis-like cache (C), language interpreter (Python), real-time Kanban (Next.js/PostgreSQL), and ESP32 telemetry logger.</p>
+      <p class="reveal">Core focus: .NET/full-stack web, data engineering, distributed systems, and embedded.</p>
     </section>
 
     <section id="experience">
@@ -373,6 +373,28 @@
       <p class="section-label">Projects</p>
       <h2>Selected Work</h2>
       <div class="projects-grid">
+        <a href="http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Retail Sales Forecasting Dashboard</h3>
+          <p class="stack">Python | scikit-learn | XGBoost | Prophet | Streamlit | FastAPI | AWS ECS | Terraform</p>
+          <p>End-to-end ML pipeline: raw sales data to production forecasts and actionable customer segments, served via an interactive dashboard on AWS.</p>
+          <ul>
+            <li>XGBoost model achieving 11% MAPE and R&sup2; = 0.91 on 6-week holdout across 1,115 stores.</li>
+            <li>K-means segmentation producing 4 actionable store clusters (silhouette &gt; 0.4).</li>
+            <li>Interactive 4-page Streamlit dashboard + FastAPI /predict endpoint, deployed on AWS ECS Fargate.</li>
+          </ul>
+          <span class="link-hint">Live Demo &rarr;</span>
+        </a>
+        <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>IoT Streaming ETL Pipeline</h3>
+          <p class="stack">PySpark | Kafka | Airflow | Redshift | Great Expectations | Prometheus | Grafana | Terraform</p>
+          <p>Production-grade data engineering: 100+ events/sec from simulated sensors through Kafka, Spark, and a medallion data lake to a Redshift warehouse with full observability.</p>
+          <ul>
+            <li>100+ events/sec Kafka ingestion with PySpark Structured Streaming (10-min watermark, dead-letter queue).</li>
+            <li>Medallion data lake (Bronze/Silver/Gold) with z-score anomaly detection and data lineage tracking.</li>
+            <li>Airflow orchestration with SLA monitoring; Grafana dashboard with 11 panels and 7 alert rules.</li>
+          </ul>
+          <span class="link-hint">GitHub &rarr;</span>
+        </a>
         <a href="https://github.com/jmahotiedu/cachekit" target="_blank" rel="noopener" class="project-card reveal">
           <h3>cachekit</h3>
           <p class="stack">C (C11) | POSIX | TCP | RESP</p>
@@ -429,6 +451,18 @@
       <p class="section-label">Contributions</p>
       <h2>Pull Request Contributions</h2>
       <div class="projects-grid">
+        <a href="https://github.com/sipeed/picoclaw/pull/213" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>sipeed/picoclaw (PR #213)</h3>
+          <p class="stack">Go | Provider Architecture | +1,484/-676 | State: Open</p>
+          <p>Refactored provider architecture by protocol family; restructured Anthropic and OpenAI-compat providers into dedicated packages with isolated tests across 11 files.</p>
+          <span class="link-hint">Pull Request &rarr;</span>
+        </a>
+        <a href="https://github.com/sipeed/picoclaw/pull/211" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>sipeed/picoclaw (PR #211)</h3>
+          <p class="stack">Go | Security Hardening | +326/-39 | State: Open</p>
+          <p>Security hardening and CI fixes: added config validation, Slack channel sanitization, cron service hardening, and expanded test coverage across 11 files.</p>
+          <span class="link-hint">Pull Request &rarr;</span>
+        </a>
         <a href="https://github.com/databricks/cli/pull/4504" target="_blank" rel="noopener" class="project-card reveal">
           <h3>databricks/cli (PR #4504)</h3>
           <p class="stack">Go | Root Auth Resolution | State: Open</p>
@@ -473,23 +507,31 @@
       <div class="reveal">
         <p class="skill-cat">Languages</p>
         <div class="skills-wrap">
-          <span class="skill">C</span><span class="skill">C#</span><span class="skill">TypeScript</span><span class="skill">Python</span><span class="skill">Java</span>
+          <span class="skill">C#</span><span class="skill">TypeScript</span><span class="skill">Java</span><span class="skill">Python</span><span class="skill">C</span><span class="skill">C++</span>
         </div>
-        <p class="skill-cat">Systems</p>
+        <p class="skill-cat">Frontend</p>
         <div class="skills-wrap">
-          <span class="skill">POSIX</span><span class="skill">Networking</span><span class="skill">Concurrency</span><span class="skill">Redis Protocol (RESP)</span>
+          <span class="skill">Next.js</span><span class="skill">React</span><span class="skill">Tailwind</span><span class="skill">Accessibility</span><span class="skill">SEO</span>
         </div>
-        <p class="skill-cat">Backend</p>
+        <p class="skill-cat">Data</p>
         <div class="skills-wrap">
-          <span class="skill">.NET</span><span class="skill">Node.js</span><span class="skill">SQL Server</span><span class="skill">PostgreSQL</span><span class="skill">REST</span><span class="skill">gRPC</span>
+          <span class="skill">pandas</span><span class="skill">scikit-learn</span><span class="skill">XGBoost</span><span class="skill">Prophet</span><span class="skill">PySpark</span><span class="skill">Kafka</span><span class="skill">Airflow</span><span class="skill">Redshift</span><span class="skill">Great Expectations</span><span class="skill">Streamlit</span>
         </div>
-        <p class="skill-cat">Infra</p>
+        <p class="skill-cat">Backend / DB</p>
         <div class="skills-wrap">
-          <span class="skill">Docker</span><span class="skill">AWS</span><span class="skill">CI/CD</span><span class="skill">GitHub Actions</span>
+          <span class="skill">.NET (ASP.NET Core, Blazor)</span><span class="skill">REST / gRPC</span><span class="skill">SQL Server</span><span class="skill">PostgreSQL</span><span class="skill">Prisma</span><span class="skill">Redis</span><span class="skill">NextAuth</span><span class="skill">Socket.io</span>
+        </div>
+        <p class="skill-cat">Cloud / DevOps</p>
+        <div class="skills-wrap">
+          <span class="skill">AWS (S3, ECR, ECS, Redshift, MSK, EMR, MWAA)</span><span class="skill">Terraform</span><span class="skill">Docker</span><span class="skill">GitHub Actions</span>
         </div>
         <p class="skill-cat">Embedded</p>
         <div class="skills-wrap">
-          <span class="skill">ESP32</span><span class="skill">FreeRTOS</span><span class="skill">I2C</span><span class="skill">UART</span><span class="skill">Driver Development</span><span class="skill">Binary Protocols</span>
+          <span class="skill">ESP32</span><span class="skill">FreeRTOS</span><span class="skill">Arduino</span><span class="skill">I2C</span><span class="skill">ADC</span><span class="skill">PID / PWM</span><span class="skill">Binary Protocols</span>
+        </div>
+        <p class="skill-cat">Testing</p>
+        <div class="skills-wrap">
+          <span class="skill">xUnit</span><span class="skill">pytest</span><span class="skill">Great Expectations</span>
         </div>
       </div>
     </section>
@@ -521,7 +563,7 @@
     <section id="contact" class="contact">
       <p class="section-label">Contact</p>
       <h2>Get in Touch</h2>
-      <p class="reveal">Bear, DE | Open to systems and backend software engineering roles.</p>
+      <p class="reveal">Bear, DE | Open to software engineering, data engineering, full-stack, and embedded systems roles.</p>
       <div class="channels reveal">
         <a href="https://linkedin.com/in/jared-mahotiere" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/jmahotiedu" target="_blank" rel="noopener">GitHub</a>
