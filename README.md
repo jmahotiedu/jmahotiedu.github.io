@@ -70,7 +70,7 @@ Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering 
 - Load-test harness, operations docs, and live end-to-end smoke test suite
 
 
-## Pull Request Contributions (Ordered by Hiring Impact)
+## Pull Request Contributions
 
 - **sipeed/picoclaw** - [PR #251](https://github.com/sipeed/picoclaw/pull/251) _(Status: Open)_: hardened tool security boundaries across `web_fetch`, filesystem path checks, and `exec` timeout behavior; added SSRF/redirect blocking, canonical symlink-safe workspace enforcement, process-tree cleanup, and regression tests/docs. +647/-27 across 11 files.
 - **sipeed/picoclaw** - [PR #213](https://github.com/sipeed/picoclaw/pull/213) _(Status: Open)_: refactored provider architecture by protocol family (discussion #122); restructured Anthropic and OpenAI-compat providers into dedicated packages with isolated tests. +1,484/-676 across 11 files.
