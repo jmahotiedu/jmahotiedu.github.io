@@ -2,13 +2,20 @@
 
 **Software Engineer** - .NET & full-stack web, embedded systems, data engineering - Purdue EET '26
 
-[LinkedIn](https://linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive portfolio](https://jmahotiedu.github.io/jmahotiedu/)
+[LinkedIn](https://linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive portfolio](https://jmahotiedu.github.io/jmahotiedu/) - [Resume (Backend PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
 
 ---
 
 ## About
 
-Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization 70-90%, CI/testing), data science & engineering (Kafka, Spark, Airflow, ML forecasting), plus embedded systems (ESP32, FreeRTOS, binary protocols). Shipped production Next.js disaster-relief site; portfolio includes a live ML forecasting dashboard on AWS, a real-time streaming ETL pipeline, SLO-driven feature flag platform, Redis-like cache (C), real-time Kanban (Next.js/PostgreSQL), and ESP32 telemetry logger.
+Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering Tech). Two summers at Nucor building production .NET services, real-time dashboards, and industrial automation.
+
+**Available for full-time roles starting May 2026.**
+
+- **.NET & Full-Stack**: Blazor dashboards, SQL optimization (70-90% runtime reduction), ~240 xUnit tests, CI quality gates
+- **Data Engineering**: Kafka/Spark/Airflow pipelines, ML forecasting (XGBoost, Prophet), AWS ECS deployments
+- **Embedded Systems**: ESP32/FreeRTOS firmware, binary protocols, DSP, industrial controls
+- **Systems Programming**: Redis-like cache in C, distributed workflow orchestrator, POSIX networking
 
 ## Experience
 
@@ -48,15 +55,17 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 
 ### workflow-orchestrator highlights
 
-- Distributed execution + retries/dead-letter
-- Scheduling + idempotent triggers
-- Observability + incident drill/postmortem
+- Distributed execution engine: 25/25 runs in 15.94s (1.57 runs/s) with 0 failures
+- DAG validation, Redis Streams consumer groups, and Postgres durable run/task state
+- Lease/heartbeat recovery with retry/backoff, dead-letter routing, and idempotency-key dedupe
+- Scheduling with cron triggers + observability (incident drill and postmortem runbook)
 
 ### Feature Flag Platform highlights
 
 - Multi-tenant control-plane with deterministic rule + percentage rollout evaluation
 - JavaScript SDK with local cache and refresh loop; admin UI for flag CRUD/publish
 - Idempotency middleware, RBAC, tenant quota controls, and audit logging
+- Load-test harness, operations docs, and live end-to-end smoke test suite
 
 
 ## Pull Request Contributions
@@ -70,10 +79,19 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 - **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) _(Status: Open)_: preserved JDBC metadata cursors by isolating version lookup from active `getTables()` result-set flow.
 - **google/langextract** - [PR #359](https://github.com/google/langextract/pull/359) _(Status: Open)_: fixed Gemini batch cache hashing for Enum/dataclass settings with deterministic regression tests.
 
-### PR status sync
+<details>
+<summary>PR status sync</summary>
 
 - Local: `powershell -ExecutionPolicy Bypass -File .\sync-pr-status.ps1 -RepoRoot .`
 - Automated: `.github/workflows/sync-pr-status.yml` runs every 6 hours and on manual dispatch, then commits status changes when needed.
+
+</details>
+
+## Education
+
+**Purdue University** - *B.S. Electrical Engineering Technology (Computer Engineering Technology)* | Minor: Computer & IT | Certificate: Entrepreneurship & Innovation | Expected May 2026
+
+**Relevant Coursework:** Embedded Digital Systems, Advanced Embedded Systems, DSP, Advanced DSP, Industrial Controls, DAQ, Wireless Communications, Systems Development, IT Architecture, Network Engineering, Electronic Prototype Development, Concurrent Digital Systems
 
 ## Skills
 
@@ -87,11 +105,11 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 
 ## Leadership
 
-- **Delta Tau Delta** | DEI Chair | Aug 2024 - Present - Launched mentorship and campus programs; repeatable onboarding and engagement playbooks.
-- **NSBE** | Member | Sep 2022 - Present - Team-based engineering projects in C#, Java, Python; recruiting and community initiatives.
+- **Delta Tau Delta** | DEI Chair | Aug 2024 - Present - Led mentorship programs pairing 15+ new members with upperclassmen; organized campus inclusion events and designed repeatable onboarding playbooks.
+- **NSBE** | Member | Sep 2022 - Present - Collaborated on team engineering projects in C#, Java, and Python; supported recruiting at career fairs and community outreach.
 
 ## Contact
 
-Bear, DE | [jmahotie@purdue.edu](mailto:jmahotie@purdue.edu) | (302) 803-7673
+Bear, DE | [jmahotie@purdue.edu](mailto:jmahotie@purdue.edu)
 
 Open to roles in software engineering, data engineering, full-stack, and embedded systems.
