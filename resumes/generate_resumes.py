@@ -14,7 +14,7 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
 CONTACT = (
     "Jared Mahotiere | Bear, DE | (302) 803-7673 | jmahotie@purdue.edu | "
-    "linkedin.com/in/jared-mahotiere | github.com/jmahotiedu"
+    "linkedin.com/in/jared-mahotiere-8b41b4250 | github.com/jmahotiedu"
 )
 
 EDUCATION_LINE_1 = (
