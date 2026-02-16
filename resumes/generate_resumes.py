@@ -28,24 +28,28 @@ EDUCATION_LINE_2 = (
 
 NUCOR_BULLETS = {
     1: (
-        "Shipped Blazor/.NET real-time operator dashboards with resilient UI state "
-        "and consolidated KPI views for plant visibility."
+        "Developed and maintained Blazor/.NET real-time operator dashboards and robust "
+        "back-end services, enhancing process transparency and improving steel production workflows."
     ),
     2: (
-        "Built C#/.NET services integrating SQL Server and QMOS; reduced critical "
-        "report runtimes 70-90% through indexing and query refactors."
+        "Led system integration projects: scoped, specified, and coordinated implementation "
+        "of new automation systems, ensuring seamless startup, cross-team adoption, and operational reliability."
     ),
     3: (
-        "Delivered automated reporting and alerting with Quartz.NET idempotent jobs, "
-        "retry/backoff logic, and legacy VB to .NET/Blazor migrations."
+        "Managed and analyzed production data in SQL Server/QMOS databases; developed "
+        "optimized queries and recommended new tables/columns to support process improvement."
     ),
     4: (
-        "Added about 240 unit/integration tests (xUnit), CI quality gates, health "
-        "checks, and structured logging to improve deployment confidence."
+        "Built automated reporting and alert systems using Quartz.NET with real-time email "
+        "notifications for maintenance and quality events, reducing manual monitoring and accelerating response."
     ),
     5: (
-        "Supported industrial automation workflows tied to PLC/HMI production systems "
-        "in a steel manufacturing environment."
+        "Migrated legacy Visual Basic applications to .NET/Blazor, reducing technical debt; "
+        "utilized Git for version control, peer code reviews, and codebase integrity."
+    ),
+    6: (
+        "Collaborated with production teams and led project meetings; conducted comprehensive "
+        "testing and validation with multi-disciplinary stakeholders while prioritizing deliverables and shipping on time with high safety and quality standards."
     ),
 }
 
@@ -54,7 +58,7 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_Embedded_Resume.pdf",
         "summary": (
             "Embedded systems and firmware engineer with ESP32/FreeRTOS, C, UART/I2C, "
-            "DSP, and industrial controls experience from two Nucor automation internships."
+            "DSP, and industrial controls experience from two Nucor internships in steel manufacturing."
         ),
         "projects": [
             (
@@ -73,7 +77,7 @@ RESUME_VARIANTS = [
                 "consumer-group workers, and failure recovery.",
             ),
         ],
-        "bullet_order": [5, 1, 2, 3, 4],
+        "bullet_order": [2, 1, 3, 4, 5],
         "skills": (
             "C, C++, C#, Python | ESP32, FreeRTOS, Arduino, I2C, SPI, UART, ADC, PWM, DMA | "
             "DSP, PID control, wireless communication | Docker, GitHub Actions, CI | .NET, SQL Server"
@@ -106,7 +110,7 @@ RESUME_VARIANTS = [
                 "and systems reliability skills.",
             ),
         ],
-        "bullet_order": [2, 1, 4, 3, 5],
+        "bullet_order": [1, 3, 4, 5, 6],
         "skills": (
             "C, C#, TypeScript, Python, Java | PostgreSQL, SQL Server, Redis Streams | "
             ".NET, ASP.NET Core, Node.js, Express, React | Docker, GitHub Actions, Prometheus, Grafana, AWS | "
@@ -117,8 +121,8 @@ RESUME_VARIANTS = [
     {
         "filename": "Jared_Mahotiere_DotNet_Industrial_Resume.pdf",
         "summary": (
-            ".NET and industrial software developer with production Blazor experience, SQL Server tuning, "
-            "automation tooling, and real-time dashboard delivery in manufacturing environments."
+            ".NET and industrial software developer with production Blazor experience, SQL Server optimization, "
+            "automated reporting, and real-time dashboard delivery in steel manufacturing environments."
         ),
         "projects": [
             (
@@ -137,7 +141,7 @@ RESUME_VARIANTS = [
                 "presence tracking, and conflict handling.",
             ),
         ],
-        "bullet_order": [1, 2, 3, 4, 5],
+        "bullet_order": [1, 3, 4, 5, 6],
         "skills": (
             "C#, .NET 8, ASP.NET Core, Blazor, Entity Framework | SQL Server, T-SQL, PostgreSQL, Redis | "
             "xUnit, CI/CD, GitHub Actions | TypeScript, React, Next.js | Docker, AWS"
@@ -148,7 +152,7 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_Data_Engineer_Resume.pdf",
         "summary": (
             "Data engineer with hands-on pipeline and ML forecasting experience across Kafka, Spark, Airflow, "
-            "and AWS, plus strong SQL optimization fundamentals from production systems work."
+            "and AWS, plus production SQL Server/QMOS data management experience."
         ),
         "projects": [
             (
@@ -166,7 +170,7 @@ RESUME_VARIANTS = [
                 "Demonstrated distributed queue orchestration patterns transferable to robust data processing systems.",
             ),
         ],
-        "bullet_order": [2, 1, 4, 3, 5],
+        "bullet_order": [3, 1, 4, 5, 6],
         "skills": (
             "Python, SQL, PySpark, C# | Kafka, Airflow, Redshift, S3, Great Expectations | "
             "PostgreSQL, SQL Server, Redis | scikit-learn, XGBoost, Prophet, pandas, Streamlit | "
@@ -267,12 +271,12 @@ def build_resume(variant, output_dir):
         )
     )
     for bullet_id in variant["bullet_order"]:
-        story.append(Paragraph(NUCOR_BULLETS[bullet_id], styles["bullet"], bulletText="•"))
+        story.append(Paragraph(NUCOR_BULLETS[bullet_id], styles["bullet"], bulletText="\u2022"))
 
     story.append(Paragraph("PROJECTS", styles["section"]))
     for title, bullet in variant["projects"]:
         story.append(Paragraph(title, styles["body_bold"]))
-        story.append(Paragraph(bullet, styles["bullet"], bulletText="•"))
+        story.append(Paragraph(bullet, styles["bullet"], bulletText="\u2022"))
 
     story.append(Spacer(1, 0.05 * inch))
     doc.build(story)
@@ -297,4 +301,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -8,11 +8,11 @@
 
 ## About
 
-Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering Tech). Two summers at Nucor building production .NET services, real-time dashboards, and industrial automation.
+Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering Tech). Two summers at Nucor building production .NET services, real-time dashboards, and automated reporting systems in steel manufacturing.
 
 **Available for full-time roles starting May 2026.**
 
-- **.NET & Full-Stack**: Blazor dashboards, SQL optimization (70-90% runtime reduction), ~240 xUnit tests, CI quality gates
+- **.NET & Full-Stack**: Blazor dashboards, SQL Server optimization, Quartz.NET automated reporting, VB-to-.NET migrations
 - **Data Engineering**: Kafka/Spark/Airflow pipelines, ML forecasting (XGBoost, Prophet), AWS ECS deployments
 - **Embedded Systems**: ESP32/FreeRTOS firmware, binary protocols, DSP, industrial controls
 - **Systems Programming**: Redis-like cache in C, distributed workflow orchestrator, POSIX networking
@@ -21,10 +21,12 @@ Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering 
 
 **Nucor Corporation** - *Software / Automation Engineering Intern* | Darlington, SC | May-Aug 2024; May-Aug 2025
 
-- Shipped Blazor/.NET real-time operator dashboards; improved process visibility with resilient UI state and consolidated KPI views.
-- Built C#/.NET services integrating SQL Server and QMOS; cut critical report runtimes by 70-90% via indexing and query refactors.
-- Delivered automated reporting/alerting with Quartz.NET (idempotency, retry/backoff) and migrated legacy Visual Basic apps to .NET/Blazor.
-- Added ~240 unit/integration tests (xUnit) and CI quality gates; health checks and structured logging for deployment confidence.
+- Developed and maintained Blazor/.NET real-time operator dashboards and robust back-end services, enhancing process transparency and improving steel production workflows.
+- Led system integration projects: scoped, specified, and coordinated implementation of new automation systems, ensuring seamless startup, cross-team adoption, and operational reliability.
+- Managed and analyzed production data in SQL Server/QMOS databases; developed optimized queries and recommended new tables/columns to support process improvement.
+- Built automated reporting and alert systems using Quartz.NET with real-time email notifications for maintenance and quality events, reducing manual monitoring and accelerating issue response.
+- Migrated legacy Visual Basic applications to .NET/Blazor, reducing technical debt and supporting future scalability/maintainability; utilized Git for code management across concurrent streams, peer code reviews, and codebase integrity.
+- Collaborated with production teams and led project meetings; conducted comprehensive testing and validation with multi-disciplinary stakeholders while prioritizing deliverables and shipping on time with high safety and quality standards.
 
 ## Projects
 
