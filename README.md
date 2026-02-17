@@ -2,7 +2,7 @@
 
 **Software Engineer** - .NET & full-stack web, embedded systems, data engineering - Purdue EET '26
 
-[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Portfolio index site](https://jmahotiedu.github.io/jmahotiedu/) - [Portfolio source (`index.html`)](./index.html) - [Resume (Backend PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
+[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive portfolio](https://jmahotiedu.github.io/jmahotiedu/) - [Resume (Backend PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
 
 ---
 
@@ -70,17 +70,16 @@ Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering 
 - Load-test harness, operations docs, and live end-to-end smoke test suite
 
 
-## Pull Request Contributions (Ordered by Hiring Impact)
+## Pull Request Contributions
 
-- **sipeed/picoclaw** - [PR #251](https://github.com/sipeed/picoclaw/pull/251) _(Status: Open)_: hardened tool security boundaries across `web_fetch`, filesystem path checks, and `exec` timeout behavior; added SSRF/redirect blocking, canonical symlink-safe workspace enforcement, process-tree cleanup, and regression tests/docs. +647/-27 across 11 files.
 - **sipeed/picoclaw** - [PR #213](https://github.com/sipeed/picoclaw/pull/213) _(Status: Open)_: refactored provider architecture by protocol family (discussion #122); restructured Anthropic and OpenAI-compat providers into dedicated packages with isolated tests. +1,484/-676 across 11 files.
 - **sipeed/picoclaw** - [PR #211](https://github.com/sipeed/picoclaw/pull/211) _(Status: Open)_: security hardening (#179) and default model/CI fixes (#199); added config validation, Slack channel sanitization, cron service hardening, and expanded test coverage. +326/-39 across 11 files.
+- **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) _(Status: Merged)_: fixed OpenAI device-code auth parsing for string/numeric poll intervals with targeted tests and clearer headless guidance.
 - **databricks/cli** - [PR #4504](https://github.com/databricks/cli/pull/4504) _(Status: Open)_: fixed non-bundle auth resolution so workspace commands no longer implicitly use bundle default targets over environment credentials; preserved explicit target behavior and added regression tests.
+- **databricks/cli** - [PR #4495](https://github.com/databricks/cli/pull/4495) _(Status: Closed)_: fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with `WorkspaceClient`.
 - **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258) _(Status: Open)_: fixed `Config` subclass attribute discovery/caching for inherited `ConfigAttribute` fields with regression coverage.
 - **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) _(Status: Open)_: preserved JDBC metadata cursors by isolating version lookup from active `getTables()` result-set flow.
 - **google/langextract** - [PR #359](https://github.com/google/langextract/pull/359) _(Status: Open)_: fixed Gemini batch cache hashing for Enum/dataclass settings with deterministic regression tests.
-- **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) _(Status: Merged)_: fixed OpenAI device-code auth parsing for string/numeric poll intervals with targeted tests and clearer headless guidance.
-- **databricks/cli** - [PR #4495](https://github.com/databricks/cli/pull/4495) _(Status: Closed)_: fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with `WorkspaceClient`.
 
 <details>
 <summary>PR status sync</summary>
