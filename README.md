@@ -72,7 +72,7 @@ Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering 
 
 ## Pull Request Contributions
 
-- **sipeed/picoclaw** - [PR #213](https://github.com/sipeed/picoclaw/pull/213) _(Status: Open)_: refactored provider architecture by protocol family (discussion #122); restructured Anthropic and OpenAI-compat providers into dedicated packages with isolated tests. +1,484/-676 across 11 files.
+- **sipeed/picoclaw** - [PR #213](https://github.com/sipeed/picoclaw/pull/213) _(Status: Open)_: refactored providers by protocol family (discussion #122) and completed review-requested hardening (shared protocol types, Anthropic `api_base` propagation, compatibility adapters, and expanded auth/routing/proxy test coverage). +1,791/-770 across 13 files.
 - **sipeed/picoclaw** - [PR #211](https://github.com/sipeed/picoclaw/pull/211) _(Status: Open)_: security hardening (#179) and default model/CI fixes (#199); added config validation, Slack channel sanitization, cron service hardening, and expanded test coverage. +326/-39 across 11 files.
 - **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) _(Status: Merged)_: fixed OpenAI device-code auth parsing for string/numeric poll intervals with targeted tests and clearer headless guidance.
 - **databricks/cli** - [PR #4504](https://github.com/databricks/cli/pull/4504) _(Status: Open)_: fixed non-bundle auth resolution so workspace commands no longer implicitly use bundle default targets over environment credentials; preserved explicit target behavior and added regression tests.
