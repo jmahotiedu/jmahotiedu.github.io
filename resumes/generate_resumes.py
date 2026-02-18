@@ -4,6 +4,7 @@ Generate four ATS-friendly, single-column, single-page resumes with reportlab.
 
 import os
 import shutil
+from pathlib import Path
 
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import letter
@@ -14,7 +15,8 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
 CONTACT = (
     "Jared Mahotiere | Bear, DE | (302) 803-7673 | jmahotie@purdue.edu | "
-    "linkedin.com/in/jared-mahotiere | github.com/jmahotiedu"
+    "linkedin.com/in/jared-mahotiere | github.com/jmahotiedu | "
+    "jmahotiedu.github.io/jmahotiedu | retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com"
 )
 
 EDUCATION_LINE_1 = (
@@ -24,6 +26,10 @@ EDUCATION_LINE_1 = (
 EDUCATION_LINE_2 = (
     "Minor: Computer &amp; IT | Certificate: Entrepreneurship &amp; Innovation | "
     "Expected May 2026"
+)
+LEADERSHIP_LINE = (
+    "<b>Delta Tau Delta (Campus Chapter):</b> DEI Chair | "
+    "<b>National Society of Black Engineers (NSBE):</b> Member"
 )
 
 NUCOR_BULLETS = {
@@ -51,6 +57,10 @@ NUCOR_BULLETS = {
         "Collaborated with production teams and led project meetings; conducted comprehensive "
         "testing and validation with multi-disciplinary stakeholders while prioritizing deliverables and shipping on time with high safety and quality standards."
     ),
+    7: (
+        "Executed controls-focused startup validation, signal-path troubleshooting, and sensor/actuator "
+        "commissioning with operators and maintenance teams to de-risk automation cutovers."
+    ),
 }
 
 RESUME_VARIANTS = [
@@ -58,7 +68,7 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_Embedded_Resume.pdf",
         "summary": (
             "Embedded systems and firmware engineer with ESP32/FreeRTOS, C, UART/I2C, "
-            "DSP, and industrial controls experience from two Nucor internships in steel manufacturing."
+            "DSP, and industrial controls from two Nucor internships, plus open-source contributor experience."
         ),
         "projects": [
             (
@@ -71,19 +81,18 @@ RESUME_VARIANTS = [
                 "Implemented a Redis-like cache server with RESP parsing, TCP event loop, "
                 "TTL expiration, and persistent snapshot support.",
             ),
-            (
-                "<b>workflow-orchestrator</b> - TypeScript, Redis Streams, Postgres",
-                "Built a durable distributed workflow engine with DAG validation, "
-                "consumer-group workers, and failure recovery.",
-            ),
         ],
-        "bullet_order": [2, 1, 3, 4, 5],
+        "bullet_order": [2, 7, 6, 3],
+        "oss_contributions": [
+            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
+            "PRs Under Review: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+        ],
         "skills": (
             "C, C++, C#, Python | ESP32, FreeRTOS, Arduino, I2C, SPI, UART, ADC, PWM, DMA | "
             "DSP, PID control, wireless communication | Docker, GitHub Actions, CI | .NET, SQL Server"
         ),
         "coursework": (
-            "Embedded Digital Systems, Advanced Embedded Systems, DSP, Advanced DSP, Industrial Controls, "
+            "Embedded Digital Systems, Advanced Embedded Digital Systems (in progress), DSP, Advanced DSP, Industrial Controls, "
             "DAQ, Wireless Communications, Electronic Prototype Development, Concurrent Digital Systems"
         ),
     },
@@ -91,30 +100,35 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_Backend_Resume.pdf",
         "summary": (
             "Backend and systems software engineer focused on distributed services, C systems programming, "
-            ".NET backend development, and SQL performance optimization."
+            ".NET backend development, SQL performance optimization, and open-source architecture hardening."
         ),
         "projects": [
             (
                 "<b>workflow-orchestrator</b> - TypeScript, Node.js, Redis Streams, Postgres",
-                "Executed 25/25 benchmark runs in 15.94s (1.57 runs/s) with DAG validation, "
-                "consumer groups, idempotency, and run-state durability.",
+                "Built a distributed workflow engine with DAG validation, Redis Streams consumer groups, "
+                "idempotent retries, and durable Postgres run/task state; benchmarked 25/25 runs in 15.94s.",
             ),
             (
-                "<b>cachekit</b> - C (C11), POSIX, RESP",
-                "Built networked in-memory caching with RESP protocol support, low-level socket handling, "
-                "and persistence primitives.",
+                "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
+                "Implemented event-driven ingestion at 100+ events/sec with medallion data architecture, "
+                "quality validation, and production monitoring/alerting.",
             ),
             (
-                "<b>Telemetry Node</b> - ESP32, FreeRTOS, C",
-                "Delivered embedded telemetry firmware to demonstrate low-level debugging, protocol design, "
-                "and systems reliability skills.",
+                "<b>Retail Sales Forecasting Dashboard</b> - Python, XGBoost, FastAPI, AWS ECS",
+                "Shipped a live forecasting product on AWS ECS; achieved XGBoost R2=0.91 and delivered "
+                "90%+ automated test coverage for API/model workflows.",
             ),
         ],
-        "bullet_order": [1, 3, 4, 5, 6],
+        "bullet_order": [1, 3, 4, 5],
+        "oss_contributions": [
+            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
+            "Bloomberg comdb2 (C/Java): fixed JDBC metadata cursor isolation bug in PR #5731 to preserve active getTables() result sets during version lookup.",
+            "Bloomberg comdb2 (C/C++/SQL): backported targeted SQLite security fixes for issue #3904 in PR #5743 (commit cede68b52); built from source, ran full test harness, reproduced failures by test ID, and published a security-fix verification matrix.",
+        ],
         "skills": (
-            "C, C#, TypeScript, Python, Java | PostgreSQL, SQL Server, Redis Streams | "
-            ".NET, ASP.NET Core, Node.js, Express, React | Docker, GitHub Actions, Prometheus, Grafana, AWS | "
-            "REST, gRPC, concurrency, POSIX networking"
+            "Languages: C, C#, TypeScript, Python, Java | Backend: .NET, ASP.NET Core, Node.js, Express, "
+            "REST, gRPC, concurrency, POSIX networking | Data: PySpark, Kafka, XGBoost, Prophet, FastAPI | "
+            "Storage/Infra: PostgreSQL, SQL Server, Redis Streams, Docker, GitHub Actions, Prometheus, Grafana, AWS, Terraform"
         ),
         "coursework": None,
     },
@@ -122,26 +136,30 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_DotNet_Industrial_Resume.pdf",
         "summary": (
             ".NET and industrial software developer with production Blazor experience, SQL Server optimization, "
-            "automated reporting, and real-time dashboard delivery in steel manufacturing environments."
+            "automated reporting, real-time dashboard delivery, and open-source backend contributions."
         ),
         "projects": [
             (
+                "<b>Event Stream Platform</b> - C#, .NET, WebSocket, WAL, Prometheus",
+                "Built a durable event ingest/replay platform with WAL-backed persistence, materialized views, "
+                "deterministic backfill tooling, and production observability.",
+            ),
+            (
                 "<b>Feature Flag Platform</b> - TypeScript, Node.js, Redis, React",
                 "Built multi-tenant control-plane patterns including deterministic rollout logic, "
-                "RBAC, idempotency, and operational observability.",
+                "RBAC, idempotency, operational observability, and a reproducible load-test harness.",
             ),
             (
                 "<b>workflow-orchestrator</b> - TypeScript, Redis Streams, Postgres",
-                "Implemented queue-driven workflow execution with durable state, retries, and "
-                "distributed worker coordination.",
-            ),
-            (
-                "<b>syncboard</b> - Next.js, Socket.IO, PostgreSQL",
-                "Built real-time full-stack collaboration features with optimistic UI updates, "
-                "presence tracking, and conflict handling.",
+                "Implemented queue-driven orchestration with DAG validation, durable run/task state, "
+                "worker retries, and dead-letter handling for reliability.",
             ),
         ],
-        "bullet_order": [1, 3, 4, 5, 6],
+        "bullet_order": [2, 1, 4, 5],
+        "oss_contributions": [
+            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
+            "PRs Under Review: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+        ],
         "skills": (
             "C#, .NET 8, ASP.NET Core, Blazor, Entity Framework | SQL Server, T-SQL, PostgreSQL, Redis | "
             "xUnit, CI/CD, GitHub Actions | TypeScript, React, Next.js | Docker, AWS"
@@ -152,7 +170,7 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_Data_Engineer_Resume.pdf",
         "summary": (
             "Data engineer with hands-on pipeline and ML forecasting experience across Kafka, Spark, Airflow, "
-            "and AWS, plus production SQL Server/QMOS data management experience."
+            "AWS, production SQL Server/QMOS data management, and open-source systems contributions."
         ),
         "projects": [
             (
@@ -161,16 +179,22 @@ RESUME_VARIANTS = [
                 "medallion architecture, and production monitoring/alerting.",
             ),
             (
-                "<b>Retail Sales Forecasting Dashboard</b> - Python, XGBoost, Prophet, Streamlit, AWS ECS",
-                "Delivered forecasting and segmentation models with production API/dashboard deployment, "
-                "feature engineering, and MAPE/R2 performance tracking.",
+                "<b>Event Stream Platform</b> - C#, .NET, WebSocket, WAL, Materialized Views",
+                "Built a durable event ingest/replay platform with WAL-backed persistence, materialized views, "
+                "backfill/reconciliation workflows, and data-quality observability.",
             ),
             (
-                "<b>workflow-orchestrator</b> - TypeScript, Redis Streams, Postgres",
-                "Demonstrated distributed queue orchestration patterns transferable to robust data processing systems.",
+                "<b>Retail Sales Forecasting Dashboard</b> - Python, XGBoost, Prophet, Streamlit, AWS ECS",
+                "Shipped a live forecasting product on AWS ECS with XGBoost R2=0.91, 11% MAPE, production "
+                "API/dashboard deployment, and 90%+ automated test coverage.",
             ),
         ],
-        "bullet_order": [3, 1, 4, 5, 6],
+        "bullet_order": [3, 1, 4, 6],
+        "oss_contributions": [
+            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
+            "Bloomberg comdb2 (C/C++/SQL): backported targeted SQLite security fixes for issue #3904 in PR #5743 (commit cede68b52), with source-build validation, harness runs, and a published security-fix verification matrix.",
+            "PRs Under Review: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+        ],
         "skills": (
             "Python, SQL, PySpark, C# | Kafka, Airflow, Redshift, S3, Great Expectations | "
             "PostgreSQL, SQL Server, Redis | scikit-learn, XGBoost, Prophet, pandas, Streamlit | "
@@ -210,22 +234,22 @@ def build_styles():
         "body": ParagraphStyle(
             "body",
             fontName="Helvetica",
-            fontSize=10,
-            leading=11.6,
+            fontSize=9.7,
+            leading=11.2,
             spaceAfter=1,
         ),
         "body_bold": ParagraphStyle(
             "body_bold",
             fontName="Helvetica-Bold",
-            fontSize=10,
-            leading=11.6,
+            fontSize=9.7,
+            leading=11.2,
             spaceAfter=0.5,
         ),
         "bullet": ParagraphStyle(
             "bullet",
             fontName="Helvetica",
-            fontSize=10,
-            leading=11.6,
+            fontSize=9.7,
+            leading=11.2,
             leftIndent=12,
             bulletIndent=2,
             spaceAfter=0.5,
@@ -259,6 +283,9 @@ def build_resume(variant, output_dir):
     if variant.get("coursework"):
         story.append(Paragraph("<b>Relevant Coursework:</b> " + variant["coursework"], styles["body"]))
 
+    story.append(Paragraph("LEADERSHIP &amp; ORGANIZATIONS", styles["section"]))
+    story.append(Paragraph(LEADERSHIP_LINE, styles["body"]))
+
     story.append(Paragraph("SKILLS", styles["section"]))
     story.append(Paragraph(variant["skills"], styles["body"]))
 
@@ -278,21 +305,38 @@ def build_resume(variant, output_dir):
         story.append(Paragraph(title, styles["body_bold"]))
         story.append(Paragraph(bullet, styles["bullet"], bulletText="\u2022"))
 
+    story.append(Paragraph("OPEN SOURCE CONTRIBUTIONS", styles["section"]))
+    for bullet in variant["oss_contributions"]:
+        story.append(Paragraph(bullet, styles["bullet"], bulletText="\u2022"))
+
     story.append(Spacer(1, 0.05 * inch))
     doc.build(story)
     return output_path
 
 
+def resolve_desktop_dir() -> Path:
+    home = Path.home()
+    candidates = [
+        home / "Desktop",
+        home / "OneDrive - purdue.edu" / "Desktop",
+        home / "OneDrive" / "Desktop",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return home / "Desktop"
+
+
 def main():
-    output_dir = r"C:\projects\jmahotiedu\resumes"
-    desktop_dir = r"C:\Users\Jared Mahotiere\OneDrive - purdue.edu\Desktop"
-    os.makedirs(output_dir, exist_ok=True)
-    os.makedirs(desktop_dir, exist_ok=True)
+    output_dir = Path(__file__).resolve().parent
+    desktop_dir = resolve_desktop_dir()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    desktop_dir.mkdir(parents=True, exist_ok=True)
 
     for variant in RESUME_VARIANTS:
-        generated = build_resume(variant, output_dir)
+        generated = build_resume(variant, str(output_dir))
         print(f"Generated: {generated}")
-        desktop_copy = os.path.join(desktop_dir, variant["filename"])
+        desktop_copy = desktop_dir / variant["filename"]
         shutil.copy2(generated, desktop_copy)
         print(f"Copied:    {desktop_copy}")
 
