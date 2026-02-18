@@ -397,6 +397,27 @@
       <p class="section-label">Projects</p>
       <h2>Selected Work</h2>
       <div class="projects-grid">
+        <a href="https://github.com/jmahotiedu/wf-orch" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>workflow-orchestrator</h3>
+          <p class="stack">TypeScript | Node.js | Postgres | Redis Streams | React</p>
+          <p>Built distributed workflow orchestration with lease/heartbeat recovery; benchmarked 25 runs in 15.94s (1.57 runs/s) with 0 failures.</p>
+          <ul>
+            <li>Implemented DAG validation, Redis Streams consumer groups, and Postgres durable run/task state.</li>
+            <li>Added retry/backoff, dead-letter routing, and idempotency-key dedupe for reliability hardening.</li>
+          </ul>
+          <span class="link-hint">GitHub &rarr;</span>
+        </a>
+        <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>IoT Streaming ETL Pipeline</h3>
+          <p class="stack">PySpark | Kafka | Airflow | Redshift | Great Expectations | Prometheus | Grafana | Terraform</p>
+          <p>Production-grade data engineering: 100+ events/sec from simulated sensors through Kafka, Spark, and a medallion data lake to a Redshift warehouse with full observability.</p>
+          <ul>
+            <li>100+ events/sec Kafka ingestion with PySpark Structured Streaming (10-min watermark, dead-letter queue).</li>
+            <li>Medallion data lake (Bronze/Silver/Gold) with z-score anomaly detection and data lineage tracking.</li>
+            <li>Airflow orchestration with SLA monitoring; Grafana dashboard with 11 panels and 7 alert rules.</li>
+          </ul>
+          <span class="link-hint">GitHub &rarr;</span>
+        </a>
         <a href="http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Retail Sales Forecasting Dashboard</h3>
           <p class="stack">Python | scikit-learn | XGBoost | Prophet | Streamlit | FastAPI | AWS ECS | Terraform</p>
@@ -408,14 +429,13 @@
           </ul>
           <span class="link-hint">Live Demo &rarr;</span>
         </a>
-        <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>IoT Streaming ETL Pipeline</h3>
-          <p class="stack">PySpark | Kafka | Airflow | Redshift | Great Expectations | Prometheus | Grafana | Terraform</p>
-          <p>Production-grade data engineering: 100+ events/sec from simulated sensors through Kafka, Spark, and a medallion data lake to a Redshift warehouse with full observability.</p>
+        <a href="https://github.com/jmahotiedu/feature-flag-platform" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Feature Flag Platform</h3>
+          <p class="stack">TypeScript | Node.js | Redis | React</p>
+          <p>SLO-driven multi-tenant feature flag platform with deterministic rule and percentage rollout evaluation, JS SDK with local cache, and admin UI.</p>
           <ul>
-            <li>100+ events/sec Kafka ingestion with PySpark Structured Streaming (10-min watermark, dead-letter queue).</li>
-            <li>Medallion data lake (Bronze/Silver/Gold) with z-score anomaly detection and data lineage tracking.</li>
-            <li>Airflow orchestration with SLA monitoring; Grafana dashboard with 11 panels and 7 alert rules.</li>
+            <li>Implemented idempotency middleware, RBAC, tenant quota controls, and audit logging.</li>
+            <li>Built load-test harness, operations docs, and live end-to-end smoke test suite.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
@@ -429,13 +449,23 @@
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
-        <a href="https://github.com/jmahotiedu/wf-orch" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>workflow-orchestrator</h3>
-          <p class="stack">TypeScript | Node.js | Postgres | Redis Streams | React</p>
-          <p>Built distributed workflow orchestration with lease/heartbeat recovery; benchmarked 25 runs in 15.94s (1.57 runs/s) with 0 failures.</p>
+        <a href="https://jmahotiedu-help-westmoreland.vercel.app" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Help Westmoreland</h3>
+          <p class="stack">Next.js 16 | React 19 | TypeScript | Tailwind v4</p>
+          <p>Shipped production disaster-relief platform with 3 intake flows (contact/volunteer/partner), donation integration, and accessibility-first UX.</p>
           <ul>
-            <li>Implemented DAG validation, Redis Streams consumer groups, and Postgres durable run/task state.</li>
-            <li>Added retry/backoff, dead-letter routing, and idempotency-key dedupe for reliability hardening.</li>
+            <li>Implemented Donorbox + Formspree workflow plumbing and GA4 event instrumentation.</li>
+            <li>Built SEO baseline with JSON-LD, sitemap/robots automation, and Open Graph/Twitter cards.</li>
+          </ul>
+          <span class="link-hint">View Live &rarr;</span>
+        </a>
+        <a href="https://github.com/jmahotiedu/syncboard" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>syncboard</h3>
+          <p class="stack">Next.js 15 | Socket.io | PostgreSQL | Prisma | NextAuth</p>
+          <p>Built real-time collaborative Kanban with optimistic UI + Socket.IO sync for 4 mutation paths (create/move/update/delete).</p>
+          <ul>
+            <li>Implemented reconnect/offline handling, presence heartbeat tracking, and last-write-wins conflict merge logic.</li>
+            <li>Delivered REST endpoints with Zod validation on a Next.js + Prisma/Postgres + NextAuth stack.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
@@ -449,52 +479,23 @@
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
-        <a href="https://github.com/jmahotiedu/syncboard" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>syncboard</h3>
-          <p class="stack">Next.js 15 | Socket.io | PostgreSQL | Prisma | NextAuth</p>
-          <p>Built real-time collaborative Kanban with optimistic UI + Socket.IO sync for 4 mutation paths (create/move/update/delete).</p>
-          <ul>
-            <li>Implemented reconnect/offline handling, presence heartbeat tracking, and last-write-wins conflict merge logic.</li>
-            <li>Delivered REST endpoints with Zod validation on a Next.js + Prisma/Postgres + NextAuth stack.</li>
-          </ul>
-          <span class="link-hint">GitHub &rarr;</span>
-        </a>
-        <a href="https://jmahotiedu-help-westmoreland.vercel.app" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>Help Westmoreland</h3>
-          <p class="stack">Next.js 16 | React 19 | TypeScript | Tailwind v4</p>
-          <p>Shipped production disaster-relief platform with 3 intake flows (contact/volunteer/partner), donation integration, and accessibility-first UX.</p>
-          <ul>
-            <li>Implemented Donorbox + Formspree workflow plumbing and GA4 event instrumentation.</li>
-            <li>Built SEO baseline with JSON-LD, sitemap/robots automation, and Open Graph/Twitter cards.</li>
-          </ul>
-          <span class="link-hint">View Live &rarr;</span>
-        </a>
-        <a href="https://github.com/jmahotiedu/feature-flag-platform" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>Feature Flag Platform</h3>
-          <p class="stack">TypeScript | Node.js | Redis | React</p>
-          <p>SLO-driven multi-tenant feature flag platform with deterministic rule and percentage rollout evaluation, JS SDK with local cache, and admin UI.</p>
-          <ul>
-            <li>Implemented idempotency middleware, RBAC, tenant quota controls, and audit logging.</li>
-            <li>Built load-test harness, operations docs, and live end-to-end smoke test suite.</li>
-          </ul>
-          <span class="link-hint">GitHub &rarr;</span>
-        </a>
+      
       </div>
     </section>
     <section id="pr-contributions">
       <p class="section-label">Contributions</p>
       <h2>Pull Request Contributions</h2>
       <div class="projects-grid">
-        <a href="https://github.com/sipeed/picoclaw/pull/251" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>sipeed/picoclaw (PR #251)</h3>
-          <p class="stack">Go | Telegram Channel Reliability | +850/-88 | State: Open</p>
-          <p>Fixed Telegram send failures for oversized outputs by chunking outbound messages, preserving placeholder-edit sequencing, and adding HTML/plain-text fallback tests for long payloads.</p>
-          <span class="link-hint">Pull Request &rarr;</span>
-        </a>
         <a href="https://github.com/sipeed/picoclaw/pull/213" target="_blank" rel="noopener" class="project-card reveal">
           <h3>sipeed/picoclaw (PR #213)</h3>
           <p class="stack">Go | Provider Architecture | +1,798/-774 | State: Merged</p>
           <p>Refactored providers by protocol family and completed review-requested hardening: shared protocol types, Anthropic <code>api_base</code> propagation, compatibility adapters, and expanded auth/routing/proxy tests across 13 files.</p>
+          <span class="link-hint">Pull Request &rarr;</span>
+        </a>
+        <a href="https://github.com/sipeed/picoclaw/pull/56" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>sipeed/picoclaw (PR #56)</h3>
+          <p class="stack">Go | OAuth Device Flow | State: Merged</p>
+          <p>Fixed device-code login parsing for interval values returned as either strings or integers, added targeted tests, and improved headless authentication guidance.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
         <a href="https://github.com/sipeed/picoclaw/pull/211" target="_blank" rel="noopener" class="project-card reveal">
@@ -509,16 +510,22 @@
           <p>Backported targeted SQLite security fixes for issue #3904 with source-build validation, full harness runs, and a published verification matrix tied to reproducible test IDs.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
+        <a href="https://github.com/bloomberg/comdb2/pull/5731" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>bloomberg/comdb2 (PR #5731)</h3>
+          <p class="stack">Java | JDBC Metadata | State: Open</p>
+          <p>Preserved active metadata result-set cursors by isolating version lookup from getTables() flow, preventing iterator invalidation during JDBC metadata access.</p>
+          <span class="link-hint">Pull Request &rarr;</span>
+        </a>
+        <a href="https://github.com/sipeed/picoclaw/pull/251" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>sipeed/picoclaw (PR #251)</h3>
+          <p class="stack">Go | Telegram Channel Reliability | +850/-88 | State: Open</p>
+          <p>Fixed Telegram send failures for oversized outputs by chunking outbound messages, preserving placeholder-edit sequencing, and adding HTML/plain-text fallback tests for long payloads.</p>
+          <span class="link-hint">Pull Request &rarr;</span>
+        </a>
         <a href="https://github.com/databricks/cli/pull/4504" target="_blank" rel="noopener" class="project-card reveal">
           <h3>databricks/cli (PR #4504)</h3>
           <p class="stack">Go | Root Auth Resolution | State: Open</p>
           <p>Fixed non-bundle auth resolution so workspace commands no longer implicitly load bundle default targets; preserved explicit bundle behavior via <code>--target</code> and added regression tests.</p>
-          <span class="link-hint">Pull Request &rarr;</span>
-        </a>
-        <a href="https://github.com/databricks/cli/pull/4495" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>databricks/cli (PR #4495)</h3>
-          <p class="stack">Go | AppKit Template | State: Closed</p>
-          <p>Fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with WorkspaceClient and aligning template behavior with current CLI APIs.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
         <a href="https://github.com/databricks/databricks-sdk-py/pull/1258" target="_blank" rel="noopener" class="project-card reveal">
@@ -527,24 +534,19 @@
           <p>Fixed Config subclass attribute discovery and caching so inherited ConfigAttribute fields resolve consistently, with regression coverage for inheritance paths.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
-        <a href="https://github.com/bloomberg/comdb2/pull/5731" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>bloomberg/comdb2 (PR #5731)</h3>
-          <p class="stack">Java | JDBC Metadata | State: Open</p>
-          <p>Preserved active metadata result-set cursors by isolating version lookup from getTables() flow, preventing iterator invalidation during JDBC metadata access.</p>
-          <span class="link-hint">Pull Request &rarr;</span>
-        </a>
-        <a href="https://github.com/sipeed/picoclaw/pull/56" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>sipeed/picoclaw (PR #56)</h3>
-          <p class="stack">Go | OAuth Device Flow | State: Merged</p>
-          <p>Fixed device-code login parsing for interval values returned as either strings or integers, added targeted tests, and improved headless authentication guidance.</p>
-          <span class="link-hint">Pull Request &rarr;</span>
-        </a>
         <a href="https://github.com/google/langextract/pull/359" target="_blank" rel="noopener" class="project-card reveal">
           <h3>google/langextract (PR #359)</h3>
           <p class="stack">Python | Gemini Batch Cache | State: Open</p>
           <p>Stabilized cache-key hashing by supporting Enum and dataclass serialization in request signatures, removing a crash path in batch processing.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
+        <a href="https://github.com/databricks/cli/pull/4495" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>databricks/cli (PR #4495)</h3>
+          <p class="stack">Go | AppKit Template | State: Closed</p>
+          <p>Fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with WorkspaceClient and aligning template behavior with current CLI APIs.</p>
+          <span class="link-hint">Pull Request &rarr;</span>
+        </a>
+      
       </div>
     </section>
     <section id="skills">

@@ -32,14 +32,14 @@ Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering 
 
 | Project | Stack | Link |
 |--------|--------|------|
-| **Retail Sales Forecasting Dashboard** | Python, scikit-learn, XGBoost, Prophet, Streamlit, FastAPI, AWS ECS, Terraform | [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) / [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com) |
-| **IoT Streaming ETL Pipeline** | PySpark, Kafka, Airflow, Redshift, Great Expectations, Prometheus, Grafana, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) |
-| **cachekit** | C (C11), POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
 | **workflow-orchestrator** | TypeScript, Node.js, Postgres, Redis Streams, React | [GitHub](https://github.com/jmahotiedu/wf-orch) |
-| **Telemetry Node** | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
-| **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
-| **Help Westmoreland** | Next.js 16, React 19, TypeScript, Tailwind v4 | [Live](https://jmahotiedu-help-westmoreland.vercel.app) |
+| **IoT Streaming ETL Pipeline** | PySpark, Kafka, Airflow, Redshift, Great Expectations, Prometheus, Grafana, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) |
+| **Retail Sales Forecasting Dashboard** | Python, scikit-learn, XGBoost, Prophet, Streamlit, FastAPI, AWS ECS, Terraform | [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) / [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com) |
 | **Feature Flag Platform** | TypeScript, Node.js, Redis, React | [GitHub](https://github.com/jmahotiedu/feature-flag-platform) |
+| **cachekit** | C (C11), POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
+| **Help Westmoreland** | Next.js 16, React 19, TypeScript, Tailwind v4 | [Live](https://jmahotiedu-help-westmoreland.vercel.app) |
+| **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
+| **Telemetry Node** | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
 
 ### Retail Sales Forecasting highlights
 
@@ -72,15 +72,16 @@ Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering 
 
 ## Pull Request Contributions
 
-- **sipeed/picoclaw** - [PR #251](https://github.com/sipeed/picoclaw/pull/251) _(Status: Open)_: fixed Telegram channel oversized-message delivery (#244) by chunking >4096-character payloads, preserving placeholder-edit flow, and adding HTML/plain-text chunk fallback tests. +850/-88 across 13 files.
 - **sipeed/picoclaw** - [PR #213](https://github.com/sipeed/picoclaw/pull/213) _(Status: Merged)_: refactored providers by protocol family (discussion #122) and completed review-requested hardening (shared protocol types, Anthropic `api_base` propagation, compatibility adapters, and expanded auth/routing/proxy test coverage). +1,798/-774 across 13 files.
-- **sipeed/picoclaw** - [PR #211](https://github.com/sipeed/picoclaw/pull/211) _(Status: Open)_: security hardening (#179) and default model/CI fixes (#199), plus follow-up review fixes (shared private-file write helper, legacy-model edge-case test, CI `go vet` + race test step with workspace generation, and refreshed conflict resolution against upstream `main`). +285/-22 across 12 files.
 - **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) _(Status: Merged)_: fixed OpenAI device-code auth parsing for string/numeric poll intervals with targeted tests and clearer headless guidance.
-- **databricks/cli** - [PR #4504](https://github.com/databricks/cli/pull/4504) _(Status: Open)_: fixed non-bundle auth resolution so workspace commands no longer implicitly use bundle default targets over environment credentials; preserved explicit target behavior and added regression tests.
-- **databricks/cli** - [PR #4495](https://github.com/databricks/cli/pull/4495) _(Status: Closed)_: fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with `WorkspaceClient`.
-- **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258) _(Status: Open)_: fixed `Config` subclass attribute discovery/caching for inherited `ConfigAttribute` fields with regression coverage.
+- **sipeed/picoclaw** - [PR #211](https://github.com/sipeed/picoclaw/pull/211) _(Status: Open, Approved)_: security hardening (#179) and default model/CI fixes (#199), plus follow-up review fixes (shared private-file write helper, legacy-model edge-case test, CI `go vet` + race test step with workspace generation, and refreshed conflict resolution against upstream `main`). +285/-22 across 12 files.
+- **bloomberg/comdb2** - [PR #5743](https://github.com/bloomberg/comdb2/pull/5743) _(Status: Open)_: backported targeted SQLite security fixes for issue #3904 with source-build validation, full harness runs, and a published security-fix verification matrix.
 - **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) _(Status: Open)_: preserved JDBC metadata cursors by isolating version lookup from active `getTables()` result-set flow.
+- **sipeed/picoclaw** - [PR #251](https://github.com/sipeed/picoclaw/pull/251) _(Status: Open)_: fixed Telegram channel oversized-message delivery (#244) by chunking >4096-character payloads, preserving placeholder-edit flow, and adding HTML/plain-text chunk fallback tests. +850/-88 across 13 files.
+- **databricks/cli** - [PR #4504](https://github.com/databricks/cli/pull/4504) _(Status: Open)_: fixed non-bundle auth resolution so workspace commands no longer implicitly use bundle default targets over environment credentials; preserved explicit target behavior and added regression tests.
+- **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258) _(Status: Open)_: fixed `Config` subclass attribute discovery/caching for inherited `ConfigAttribute` fields with regression coverage.
 - **google/langextract** - [PR #359](https://github.com/google/langextract/pull/359) _(Status: Open)_: fixed Gemini batch cache hashing for Enum/dataclass settings with deterministic regression tests.
+- **databricks/cli** - [PR #4495](https://github.com/databricks/cli/pull/4495) _(Status: Closed)_: fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with `WorkspaceClient`.
 
 <details>
 <summary>PR status sync</summary>
