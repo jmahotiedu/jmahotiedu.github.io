@@ -2,7 +2,7 @@
 
 Software Engineer - .NET, full-stack systems, data engineering, embedded systems - Purdue EET '26
 
-[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive Portfolio](https://jmahotiedu.github.io/jmahotiedu/) - [Resume](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf)
+[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive Portfolio](https://jmahotiedu.github.io/) - [Resume](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf)
 
 ---
 
