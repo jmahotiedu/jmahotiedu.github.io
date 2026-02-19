@@ -78,12 +78,12 @@ Darlington, SC | May-Aug 2024 and May-Aug 2025
 
 ## Open Source Contributions
 
-- [sipeed/picoclaw PR #213](https://github.com/sipeed/picoclaw/pull/213) - merged provider protocol-family refactor and hardening follow-ups.
-- [sipeed/picoclaw PR #56](https://github.com/sipeed/picoclaw/pull/56) - merged OpenAI device-code auth interval parsing fix.
-- [sipeed/picoclaw PR #211](https://github.com/sipeed/picoclaw/pull/211) - security/model hardening and CI reliability updates.
-- [bloomberg/comdb2 PR #5743](https://github.com/bloomberg/comdb2/pull/5743) - targeted SQLite security backports with verification matrix.
-- [bloomberg/comdb2 PR #5731](https://github.com/bloomberg/comdb2/pull/5731) - JDBC metadata cursor isolation fix.
-- [databricks/cli PR #4504](https://github.com/databricks/cli/pull/4504) - auth-resolution bug fix for non-bundle workspace commands.
+- **sipeed/picoclaw** - [PR #213](https://github.com/sipeed/picoclaw/pull/213) _(Status: Merged)_: provider protocol-family refactor and hardening follow-ups.
+- **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) _(Status: Merged)_: OpenAI device-code auth interval parsing fix.
+- **sipeed/picoclaw** - [PR #211](https://github.com/sipeed/picoclaw/pull/211) _(Status: Open)_: security/model hardening and CI reliability updates.
+- **bloomberg/comdb2** - [PR #5743](https://github.com/bloomberg/comdb2/pull/5743) _(Status: Open)_: targeted SQLite security backports with verification matrix.
+- **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) _(Status: Open)_: JDBC metadata cursor isolation fix.
+- **databricks/cli** - [PR #4504](https://github.com/databricks/cli/pull/4504) _(Status: Open)_: auth-resolution bug fix for non-bundle workspace commands.
 
 PR status sync:
 - Local: `powershell -ExecutionPolicy Bypass -File .\sync-pr-status.ps1 -RepoRoot .`
