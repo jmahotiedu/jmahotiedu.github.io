@@ -1,120 +1,120 @@
 # Jared Mahotiere
 
-**Software Engineer** - .NET & full-stack web, embedded systems, data engineering - Purdue EET '26
+Software Engineer - .NET, full-stack systems, data engineering, embedded systems - Purdue EET '26
 
-[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive portfolio](https://jmahotiedu.github.io/jmahotiedu/) - [Resume](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf)
+[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive Portfolio](https://jmahotiedu.github.io/jmahotiedu/) - [Data Engineer Resume](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf)
 
 ---
 
 ## About
 
-Software engineer graduating May 2026 from Purdue (BS EET, Computer Engineering Tech). Two summers at Nucor building production .NET services, real-time dashboards, and automated reporting systems in steel manufacturing.
+Software engineer graduating in May 2026 from Purdue University (BS Electrical Engineering Technology, Computer Engineering Technology concentration). Two summers at Nucor building production .NET services, real-time operator dashboards, and automated reporting for steel manufacturing operations.
 
-**Available for full-time roles starting May 2026.**
+Open to full-time software roles starting May 2026.
 
-- **.NET & Full-Stack**: Blazor dashboards, SQL Server optimization, Quartz.NET automated reporting, VB-to-.NET migrations
-- **Data Engineering**: Kafka/Spark/Airflow pipelines, ML forecasting (XGBoost, Prophet), AWS ECS deployments
-- **Embedded Systems**: ESP32/FreeRTOS firmware, binary protocols, DSP, industrial controls
-- **Systems Programming**: Redis-like cache in C, distributed workflow orchestrator, POSIX networking
+- .NET and Full-Stack: Blazor, ASP.NET Core, SQL Server optimization, automation tooling
+- Data and ML Engineering: Kafka/Spark/Airflow pipelines, forecasting (XGBoost/Prophet), production APIs
+- Systems and Reliability: distributed orchestration, idempotency, retries, observability
+- Embedded and Firmware: ESP32/FreeRTOS, binary protocols, DSP, controls
+
+## Cloud Deployment Snapshot (Updated February 19, 2026)
+
+| Project | Status | Public Endpoint | Infra |
+|--------|--------|-----------------|-------|
+| Retail Forecast Dashboard | Live | http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com | ECS Fargate, ALB, ECR, Terraform |
+| Feature Flag Platform | Live | http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com | ECS Fargate (API/UI), RDS, ElastiCache, ALB, Terraform |
+| Workflow Orchestrator | Live | http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com | ECS Fargate (API/worker/UI), RDS, ElastiCache, ALB, Terraform |
+| Streaming ETL Pipeline | Core mode deployed | N/A | Terraform core mode (MSK/S3/VPC/ECR) is ready; full EMR/MWAA/Redshift path is gated by account subscription enablement |
+
+Health checks run on February 19, 2026:
+- Retail root: `200`
+- Feature Flag `/api/health`: `200`
+- Workflow Orchestrator `/api/health`: `200`
 
 ## Experience
 
-**Nucor Corporation** - *Software / Automation Engineering Intern* | Darlington, SC | May-Aug 2024; May-Aug 2025
+**Nucor Corporation** - Software / Automation Engineering Intern  
+Darlington, SC | May-Aug 2024 and May-Aug 2025
 
-- Developed and maintained Blazor/.NET real-time operator dashboards and robust back-end services, enhancing process transparency and improving steel production workflows.
-- Led system integration projects: scoped, specified, and coordinated implementation of new automation systems, ensuring seamless startup, cross-team adoption, and operational reliability.
-- Managed and analyzed production data in SQL Server/QMOS databases; developed optimized queries and recommended new tables/columns to support process improvement.
-- Built automated reporting and alert systems using Quartz.NET with real-time email notifications for maintenance and quality events, reducing manual monitoring and accelerating issue response.
-- Migrated legacy Visual Basic applications to .NET/Blazor, reducing technical debt and supporting future scalability/maintainability; utilized Git for code management across concurrent streams, peer code reviews, and codebase integrity.
-- Collaborated with production teams and led project meetings; conducted comprehensive testing and validation with multi-disciplinary stakeholders while prioritizing deliverables and shipping on time with high safety and quality standards.
+- Built and maintained Blazor/.NET real-time dashboards and backend services used by operators in production.
+- Led automation integration efforts from scoping/specification through startup and handoff.
+- Optimized SQL Server/QMOS data workflows with improved queries and schema recommendations.
+- Delivered automated Quartz.NET reporting and alerts that reduced manual monitoring.
+- Migrated legacy VB tooling to .NET/Blazor, reducing technical debt and improving maintainability.
+- Coordinated testing/validation with cross-functional teams while meeting safety and delivery targets.
 
-## Projects
+## Selected Projects
 
-| Project | Stack | Link |
-|--------|--------|------|
-| **workflow-orchestrator** | TypeScript, Node.js, Postgres, Redis Streams, React | [GitHub](https://github.com/jmahotiedu/wf-orch) |
-| **IoT Streaming ETL Pipeline** | PySpark, Kafka, Airflow, Redshift, Great Expectations, Prometheus, Grafana, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) |
-| **Retail Sales Forecasting Dashboard** | Python, scikit-learn, XGBoost, Prophet, Streamlit, FastAPI, AWS ECS, Terraform | [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) / [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com) |
-| **Feature Flag Platform** | TypeScript, Node.js, Redis, React | [GitHub](https://github.com/jmahotiedu/feature-flag-platform) |
-| **cachekit** | C (C11), POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
-| **Help Westmoreland** | Next.js 16, React 19, TypeScript, Tailwind v4 | [Live](https://jmahotiedu-help-westmoreland.vercel.app) |
-| **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
-| **Telemetry Node** | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
+| Project | Stack | Links |
+|--------|-------|-------|
+| Workflow Orchestrator | TypeScript, Node.js, Redis Streams, Postgres, React | [GitHub](https://github.com/jmahotiedu/workflow-orchestrator) / [Live](http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com) |
+| IoT Streaming ETL Pipeline | Kafka, PySpark, Airflow, Redshift, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) |
+| Retail Forecast Dashboard | Python, XGBoost, FastAPI, Streamlit, AWS ECS | [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) / [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com) |
+| Feature Flag Platform | TypeScript, Node.js, Redis, React, Terraform | [GitHub](https://github.com/jmahotiedu/feature-flag-platform) / [Live](http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com) |
+| cachekit | C11, POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
+| Telemetry Node | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
 
-### Retail Sales Forecasting highlights
+## Project Highlights
 
-- XGBoost model achieving 11% MAPE and R² = 0.91 on 6-week holdout across 1,115 stores
-- K-means segmentation producing 4 actionable store clusters (silhouette > 0.4)
-- Interactive 4-page Streamlit dashboard + FastAPI /predict endpoint, deployed on AWS ECS Fargate
-- 20+ engineered features: lag, rolling stats, holiday flags, competition proximity, promo duration
+### Retail Forecast Dashboard
+- Forecasting pipeline with XGBoost achieving 11% MAPE and R^2 = 0.91.
+- Production deployment on AWS ECS Fargate behind ALB.
+- API/model workflows with 90%+ automated test coverage.
 
-### IoT Streaming ETL Pipeline highlights
+### Workflow Orchestrator
+- Distributed DAG execution with durable run/task state and Redis Streams workers.
+- Benchmark: 25/25 successful runs in 15.94s (1.57 runs/s).
+- Deployed on ECS Fargate with ALB, RDS Postgres, and ElastiCache Redis.
 
-- 100+ events/sec Kafka ingestion with PySpark Structured Streaming (10-min watermark, dead-letter queue)
-- Medallion data lake (Bronze/Silver/Gold) with z-score anomaly detection and data lineage tracking
-- Airflow orchestration with SLA monitoring, data freshness sensors, and Slack alerts
-- Great Expectations validation at every layer; Grafana dashboard with 11 panels and 7 alert rules
+### Feature Flag Platform
+- Multi-tenant control plane, deterministic rollout logic, idempotency, and RBAC.
+- Admin UI plus SDK caching/refresh semantics for client-side evaluation.
+- Deployed on ECS Fargate with ALB, RDS Postgres, and ElastiCache Redis.
 
-### workflow-orchestrator highlights
+### Streaming ETL Pipeline
+- 100+ events/sec ingestion with Kafka and Spark Structured Streaming.
+- Medallion (Bronze/Silver/Gold) pipeline plus quality validation and monitoring.
+- Full Terraform stack includes MSK, EMR, MWAA, and Redshift Serverless.
 
-- Distributed execution engine: 25/25 runs in 15.94s (1.57 runs/s) with 0 failures
-- DAG validation, Redis Streams consumer groups, and Postgres durable run/task state
-- Lease/heartbeat recovery with retry/backoff, dead-letter routing, and idempotency-key dedupe
-- Scheduling with cron triggers + observability (incident drill and postmortem runbook)
+## Open Source Contributions
 
-### Feature Flag Platform highlights
+- [sipeed/picoclaw PR #213](https://github.com/sipeed/picoclaw/pull/213) - merged provider protocol-family refactor and hardening follow-ups.
+- [sipeed/picoclaw PR #56](https://github.com/sipeed/picoclaw/pull/56) - merged OpenAI device-code auth interval parsing fix.
+- [sipeed/picoclaw PR #211](https://github.com/sipeed/picoclaw/pull/211) - security/model hardening and CI reliability updates.
+- [bloomberg/comdb2 PR #5743](https://github.com/bloomberg/comdb2/pull/5743) - targeted SQLite security backports with verification matrix.
+- [bloomberg/comdb2 PR #5731](https://github.com/bloomberg/comdb2/pull/5731) - JDBC metadata cursor isolation fix.
+- [databricks/cli PR #4504](https://github.com/databricks/cli/pull/4504) - auth-resolution bug fix for non-bundle workspace commands.
 
-- Multi-tenant control-plane with deterministic rule + percentage rollout evaluation
-- JavaScript SDK with local cache and refresh loop; admin UI for flag CRUD/publish
-- Idempotency middleware, RBAC, tenant quota controls, and audit logging
-- Load-test harness, operations docs, and live end-to-end smoke test suite
-
-
-## Pull Request Contributions
-
-- **sipeed/picoclaw** - [PR #213](https://github.com/sipeed/picoclaw/pull/213) _(Status: Merged)_: refactored providers by protocol family (discussion #122) and completed review-requested hardening (shared protocol types, Anthropic `api_base` propagation, compatibility adapters, and expanded auth/routing/proxy test coverage). +1,798/-774 across 13 files.
-- **sipeed/picoclaw** - [PR #56](https://github.com/sipeed/picoclaw/pull/56) _(Status: Merged)_: fixed OpenAI device-code auth parsing for string/numeric poll intervals with targeted tests and clearer headless guidance.
-- **sipeed/picoclaw** - [PR #211](https://github.com/sipeed/picoclaw/pull/211) _(Status: Open, Approved)_: security hardening (#179) and default model/CI fixes (#199), plus follow-up review fixes (shared private-file write helper, legacy-model edge-case test, CI `go vet` + race test step with workspace generation, and refreshed conflict resolution against upstream `main`). +285/-22 across 12 files.
-- **bloomberg/comdb2** - [PR #5743](https://github.com/bloomberg/comdb2/pull/5743) _(Status: Open)_: backported targeted SQLite security fixes for issue #3904 with source-build validation, full harness runs, and a published security-fix verification matrix.
-- **bloomberg/comdb2** - [PR #5731](https://github.com/bloomberg/comdb2/pull/5731) _(Status: Open)_: preserved JDBC metadata cursors by isolating version lookup from active `getTables()` result-set flow.
-- **sipeed/picoclaw** - [PR #251](https://github.com/sipeed/picoclaw/pull/251) _(Status: Open)_: fixed Telegram channel oversized-message delivery (#244) by chunking >4096-character payloads, preserving placeholder-edit flow, and adding HTML/plain-text chunk fallback tests. +850/-88 across 13 files.
-- **databricks/cli** - [PR #4504](https://github.com/databricks/cli/pull/4504) _(Status: Open)_: fixed non-bundle auth resolution so workspace commands no longer implicitly use bundle default targets over environment credentials; preserved explicit target behavior and added regression tests.
-- **databricks/databricks-sdk-py** - [PR #1258](https://github.com/databricks/databricks-sdk-py/pull/1258) _(Status: Open)_: fixed `Config` subclass attribute discovery/caching for inherited `ConfigAttribute` fields with regression coverage.
-- **google/langextract** - [PR #359](https://github.com/google/langextract/pull/359) _(Status: Open)_: fixed Gemini batch cache hashing for Enum/dataclass settings with deterministic regression tests.
-- **databricks/cli** - [PR #4495](https://github.com/databricks/cli/pull/4495) _(Status: Closed)_: fixed AppKit TypeScript tRPC template usage by replacing unsupported request-context calls with `WorkspaceClient`.
-
-<details>
-<summary>PR status sync</summary>
-
+PR status sync:
 - Local: `powershell -ExecutionPolicy Bypass -File .\sync-pr-status.ps1 -RepoRoot .`
-- Automated: `.github/workflows/sync-pr-status.yml` runs every 6 hours and on manual dispatch, then commits status changes when needed.
-
-</details>
+- Automated: `.github/workflows/sync-pr-status.yml`
 
 ## Education
 
-**Purdue University** - *B.S. Electrical Engineering Technology (Computer Engineering Technology)* | Minor: Computer & IT | Certificate: Entrepreneurship & Innovation | Expected May 2026
+**Purdue University**  
+B.S. Electrical Engineering Technology (Computer Engineering Technology)  
+Minor: Computer & IT | Certificate: Entrepreneurship & Innovation | Expected May 2026
 
-**Relevant Coursework:** Embedded Digital Systems, Advanced Embedded Systems, DSP, Advanced DSP, Industrial Controls, DAQ, Wireless Communications, Systems Development, IT Architecture, Network Engineering, Electronic Prototype Development, Concurrent Digital Systems
+Relevant coursework: Embedded Digital Systems, Advanced Embedded Systems, DSP, Advanced DSP, Industrial Controls, DAQ, Wireless Communications, Systems Development, IT Architecture, Network Engineering.
 
 ## Skills
 
-**Languages:** C#, TypeScript, Java, Python, C, C++
-**Frontend:** Next.js, React, Tailwind, accessibility, SEO
-**Data:** pandas, scikit-learn, XGBoost, Prophet, PySpark, Kafka, Airflow, Redshift, Great Expectations, Streamlit
-**Embedded:** ESP32, FreeRTOS, Arduino, I2C, ADC, drivers, PID, PWM, binary protocols
-**Backend/DB:** .NET (ASP.NET Core, Blazor), REST/gRPC, SQL Server, PostgreSQL, Prisma, Redis, NextAuth, Socket.io
-**Cloud/DevOps:** AWS (S3, ECR, ECS, Redshift, MSK, EMR, MWAA, CloudFront, Route 53), Terraform, Docker, GitHub Actions
-**Testing:** xUnit, pytest, Great Expectations
+- Languages: C#, TypeScript, Python, Java, C, C++
+- Backend: .NET, ASP.NET Core, Node.js, REST, gRPC, SQL Server, PostgreSQL, Redis
+- Data: Kafka, PySpark, Airflow, pandas, scikit-learn, XGBoost, Prophet, Great Expectations
+- Cloud/DevOps: AWS (ECS, ECR, ALB, RDS, ElastiCache, S3, MSK, EMR, MWAA, Redshift), Terraform, Docker, GitHub Actions
+- Embedded: ESP32, FreeRTOS, UART/I2C/SPI, ADC/PWM, DSP, controls
+- Testing: xUnit, pytest, integration/load testing, CI pipelines
 
-## Leadership
+## Resume Variants
 
-- **Delta Tau Delta** | DEI Chair | Aug 2024 - Present - Led mentorship programs pairing 15+ new members with upperclassmen; organized campus inclusion events and designed repeatable onboarding playbooks.
-- **NSBE** | Member | Sep 2022 - Present - Collaborated on team engineering projects in C#, Java, and Python; supported recruiting at career fairs and community outreach.
+- [Backend Resume (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
+- [Data Engineer Resume (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf)
+- [.NET/Industrial Resume (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_DotNet_Industrial_Resume.pdf)
+- [Embedded Resume (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Embedded_Resume.pdf)
 
 ## Contact
 
 Bear, DE | [jmahotie@purdue.edu](mailto:jmahotie@purdue.edu)
 
-Open to roles in software engineering, data engineering, full-stack, and embedded systems.
-
+Open to software engineering, data engineering, full-stack, backend, and embedded systems roles.

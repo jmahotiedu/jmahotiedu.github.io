@@ -3,3 +3,7 @@
 .cursor/
 .cursorrules
 .aider*
+
+# python
+__pycache__/
+*.py[cod]

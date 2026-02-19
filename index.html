@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jared Mahotiere - Software Engineer</title>
-  <meta name="description" content="Software engineer: .NET, full-stack web, data engineering, and embedded systems. Built ML forecasting dashboards, real-time streaming pipelines, distributed orchestration, and embedded telemetry. Two Nucor internships in steel manufacturing." />
+  <meta name="description" content="Software engineer: .NET, full-stack web, data engineering, and embedded systems. Built and deployed AWS portfolio systems across ECS Fargate, ALB, RDS, ElastiCache, and Terraform." />
   <meta property="og:title" content="Jared Mahotiere - Software Engineer" />
-  <meta property="og:description" content="Software engineer: .NET, full-stack web, data engineering, and embedded systems. Built ML forecasting dashboards, real-time streaming pipelines, distributed orchestration, and embedded telemetry." />
+  <meta property="og:description" content="Software engineer: .NET, full-stack web, data engineering, and embedded systems. Built and deployed AWS portfolio systems across ECS Fargate, ALB, RDS, ElastiCache, and Terraform." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jmahotiedu.github.io/jmahotiedu/" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Jared Mahotiere - Software Engineer" />
-  <meta name="twitter:description" content="Software engineer: .NET, full-stack web, data engineering, and embedded systems. Purdue EET '26. Available May 2026." />
+  <meta name="twitter:description" content="Software engineer: .NET, full-stack web, data engineering, and embedded systems. Live AWS deployments across retail forecasting, feature flags, and workflow orchestration." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -344,6 +344,7 @@
         <li><a href="#about">Summary</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#cloud">Cloud</a></li>
         <li><a href="#pr-contributions">PRs</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
@@ -355,11 +356,11 @@
     <header class="hero">
       <p class="tag">Software Engineer</p>
       <h1>Jared Mahotiere</h1>
-      <p class="sub">.NET and full-stack web, data science &amp; engineering, embedded systems. Shipped ML forecasting dashboards on AWS, real-time streaming pipelines, distributed orchestration, and production .NET services. Available May 2026.</p>
+      <p class="sub">.NET and full-stack systems, data and ML engineering, embedded firmware. Shipped live AWS deployments across forecasting, feature flags, and workflow orchestration, plus production .NET services from Nucor internships. Available May 2026.</p>
       <div class="links">
         <a class="primary" href="https://www.linkedin.com/in/jared-mahotiere" target="_blank" rel="noopener">LinkedIn</a>
         <a class="secondary" href="https://github.com/jmahotiedu" target="_blank" rel="noopener">GitHub</a>
-        <a class="secondary" href="https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <a class="secondary" href="resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
       </div>
     </header>
 
@@ -370,7 +371,7 @@
       <p class="reveal"><strong>Available for full-time roles starting May 2026.</strong></p>
       <ul class="reveal">
         <li><strong>.NET &amp; Full-Stack:</strong> Blazor dashboards, SQL Server optimization, Quartz.NET automated reporting, VB-to-.NET migrations.</li>
-        <li><strong>Data Engineering:</strong> Kafka/Spark/Airflow pipelines, ML forecasting (XGBoost, Prophet), AWS ECS deployments.</li>
+        <li><strong>Data Engineering:</strong> Kafka/Spark/Airflow pipelines, ML forecasting (XGBoost, Prophet), AWS deployments on ECS/ALB/RDS/ElastiCache.</li>
         <li><strong>Embedded Systems:</strong> ESP32/FreeRTOS firmware, binary protocols, DSP, industrial controls.</li>
         <li><strong>Systems Programming:</strong> Redis-like cache in C, distributed workflow orchestrator, POSIX networking.</li>
       </ul>
@@ -397,7 +398,7 @@
       <p class="section-label">Projects</p>
       <h2>Selected Work</h2>
       <div class="projects-grid">
-        <a href="https://github.com/jmahotiedu/wf-orch" target="_blank" rel="noopener" class="project-card reveal">
+        <a href="https://github.com/jmahotiedu/workflow-orchestrator" target="_blank" rel="noopener" class="project-card reveal">
           <h3>workflow-orchestrator</h3>
           <p class="stack">TypeScript | Node.js | Postgres | Redis Streams | React</p>
           <p>Built distributed workflow orchestration with lease/heartbeat recovery; benchmarked 25 runs in 15.94s (1.57 runs/s) with 0 failures.</p>
@@ -480,6 +481,52 @@
           <span class="link-hint">GitHub &rarr;</span>
         </a>
       
+      </div>
+    </section>
+    <section id="cloud">
+      <p class="section-label">Cloud</p>
+      <h2>Live Deployment Status</h2>
+      <div class="projects-grid">
+        <a href="http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Retail Forecast Dashboard</h3>
+          <p class="stack">Status: Live | Verified: Feb 19, 2026</p>
+          <p>ECS Fargate service behind ALB with Terraform-managed AWS infrastructure.</p>
+          <ul>
+            <li>Endpoint health: root returned HTTP 200.</li>
+            <li>Stack: ECS, ALB, ECR, CloudWatch, Terraform.</li>
+          </ul>
+          <span class="link-hint">Open Endpoint &rarr;</span>
+        </a>
+        <a href="http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Feature Flag Platform</h3>
+          <p class="stack">Status: Live | Verified: Feb 19, 2026</p>
+          <p>Control-plane API and admin UI on ECS Fargate with managed data stores.</p>
+          <ul>
+            <li>Endpoint health: <code>/api/health</code> returned HTTP 200.</li>
+            <li>Stack: ECS, ALB, RDS Postgres, ElastiCache Redis, ECR, Terraform.</li>
+          </ul>
+          <span class="link-hint">Open Endpoint &rarr;</span>
+        </a>
+        <a href="http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Workflow Orchestrator</h3>
+          <p class="stack">Status: Live | Verified: Feb 19, 2026</p>
+          <p>API, worker, and UI services deployed on ECS Fargate behind a shared ALB.</p>
+          <ul>
+            <li>Endpoint health: <code>/api/health</code> returned HTTP 200.</li>
+            <li>Stack: ECS, ALB, RDS Postgres, ElastiCache Redis, ECR, Terraform.</li>
+          </ul>
+          <span class="link-hint">Open Endpoint &rarr;</span>
+        </a>
+        <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
+          <h3>Streaming ETL Pipeline</h3>
+          <p class="stack">Status: Core mode deployed</p>
+          <p>Terraform infrastructure is deployment-ready with cost-aware core mode for demos.</p>
+          <ul>
+            <li>Core mode: MSK, S3 medallion buckets, VPC, ECR.</li>
+            <li>Full mode: EMR/MWAA/Redshift pending account service subscription enablement.</li>
+          </ul>
+          <span class="link-hint">View Infrastructure &rarr;</span>
+        </a>
       </div>
     </section>
     <section id="pr-contributions">
@@ -571,7 +618,7 @@
         </div>
         <p class="skill-cat">Cloud / DevOps</p>
         <div class="skills-wrap">
-          <span class="skill">AWS (S3, ECR, ECS, Redshift, MSK, EMR, MWAA)</span><span class="skill">Terraform</span><span class="skill">Docker</span><span class="skill">GitHub Actions</span>
+          <span class="skill">AWS (ECS, ALB, RDS, ElastiCache, S3, ECR, MSK, EMR, MWAA, Redshift)</span><span class="skill">Terraform</span><span class="skill">Docker</span><span class="skill">GitHub Actions</span>
         </div>
         <p class="skill-cat">Embedded</p>
         <div class="skills-wrap">
@@ -616,6 +663,7 @@
       <div class="channels reveal">
         <a href="https://www.linkedin.com/in/jared-mahotiere" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/jmahotiedu" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jmahotiedu/jmahotiedu/tree/main/resumes" target="_blank" rel="noopener">Resume Variants</a>
         <a href="mailto:jmahotie@purdue.edu">jmahotie@purdue.edu</a>
       </div>
     </section>

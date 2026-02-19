@@ -16,7 +16,7 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 CONTACT = (
     "Jared Mahotiere | Bear, DE | (302) 803-7673 | jmahotie@purdue.edu | "
     "linkedin.com/in/jared-mahotiere | github.com/jmahotiedu | "
-    "jmahotiedu.github.io/jmahotiedu | retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com"
+    "jmahotiedu.github.io/jmahotiedu"
 )
 
 EDUCATION_LINE_1 = (
@@ -100,13 +100,13 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_Backend_Resume.pdf",
         "summary": (
             "Backend and systems software engineer focused on distributed services, C systems programming, "
-            ".NET backend development, SQL performance optimization, and open-source architecture hardening."
+            ".NET backend development, SQL performance optimization, AWS ECS deployments, and open-source architecture hardening."
         ),
         "projects": [
             (
                 "<b>workflow-orchestrator</b> - TypeScript, Node.js, Redis Streams, Postgres",
                 "Built a distributed workflow engine with DAG validation, Redis Streams consumer groups, "
-                "idempotent retries, and durable Postgres run/task state; benchmarked 25/25 runs in 15.94s.",
+                "idempotent retries, and durable Postgres run/task state; benchmarked 25/25 runs in 15.94s and deployed on AWS ECS Fargate with ALB/RDS/Redis.",
             ),
             (
                 "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
@@ -128,7 +128,7 @@ RESUME_VARIANTS = [
         "skills": (
             "Languages: C, C#, TypeScript, Python, Java | Backend: .NET, ASP.NET Core, Node.js, Express, "
             "REST, gRPC, concurrency, POSIX networking | Data: PySpark, Kafka, XGBoost, Prophet, FastAPI | "
-            "Storage/Infra: PostgreSQL, SQL Server, Redis Streams, Docker, GitHub Actions, Prometheus, Grafana, AWS, Terraform"
+            "Storage/Infra: PostgreSQL, SQL Server, Redis Streams, Docker, GitHub Actions, Prometheus, Grafana, AWS (ECS, ALB, RDS, ElastiCache), Terraform"
         ),
         "coursework": None,
     },
@@ -136,7 +136,7 @@ RESUME_VARIANTS = [
         "filename": "Jared_Mahotiere_DotNet_Industrial_Resume.pdf",
         "summary": (
             ".NET and industrial software developer with production Blazor experience, SQL Server optimization, "
-            "automated reporting, real-time dashboard delivery, and open-source backend contributions."
+            "automated reporting, real-time dashboard delivery, AWS ECS platform deployments, and open-source backend contributions."
         ),
         "projects": [
             (
@@ -147,7 +147,7 @@ RESUME_VARIANTS = [
             (
                 "<b>Feature Flag Platform</b> - TypeScript, Node.js, Redis, React",
                 "Built multi-tenant control-plane patterns including deterministic rollout logic, "
-                "RBAC, idempotency, operational observability, and a reproducible load-test harness.",
+                "RBAC, idempotency, operational observability, and a reproducible load-test harness; deployed on AWS ECS Fargate with ALB, RDS Postgres, and ElastiCache Redis.",
             ),
             (
                 "<b>workflow-orchestrator</b> - TypeScript, Redis Streams, Postgres",
@@ -163,6 +163,7 @@ RESUME_VARIANTS = [
         "skills": (
             "C#, .NET 8, ASP.NET Core, Blazor, Entity Framework | SQL Server, T-SQL, PostgreSQL, Redis | "
             "xUnit, CI/CD, GitHub Actions | TypeScript, React, Next.js | Docker, AWS"
+            " (ECS Fargate, ALB, RDS, ElastiCache)"
         ),
         "coursework": "Industrial Controls, DAQ, Systems Development, IT Architecture, Network Engineering",
     },
@@ -176,7 +177,7 @@ RESUME_VARIANTS = [
             (
                 "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
                 "Built streaming ETL with 100+ events/sec ingestion, data quality validation, "
-                "medallion architecture, and production monitoring/alerting.",
+                "medallion architecture, production monitoring/alerting, and Terraform cloud topology across MSK/EMR/MWAA/Redshift with cost-aware core deployment mode.",
             ),
             (
                 "<b>Event Stream Platform</b> - C#, .NET, WebSocket, WAL, Materialized Views",
@@ -198,7 +199,7 @@ RESUME_VARIANTS = [
         "skills": (
             "Python, SQL, PySpark, C# | Kafka, Airflow, Redshift, S3, Great Expectations | "
             "PostgreSQL, SQL Server, Redis | scikit-learn, XGBoost, Prophet, pandas, Streamlit | "
-            "Docker, Terraform, GitHub Actions, AWS (ECS, ECR, MSK, EMR, MWAA)"
+            "Docker, Terraform, GitHub Actions, AWS (ECS, ALB, RDS, ElastiCache, ECR, MSK, EMR, MWAA)"
         ),
         "coursework": None,
     },
