@@ -24,12 +24,16 @@ Open to full-time software roles starting May 2026.
 | Retail Forecast Dashboard | Live | http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com | ECS Fargate, ALB, ECR, Terraform |
 | Feature Flag Platform | Live | http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com | ECS Fargate (API/UI), RDS, ElastiCache, ALB, Terraform |
 | Workflow Orchestrator | Live | http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com | ECS Fargate (API/worker/UI), RDS, ElastiCache, ALB, Terraform |
-| Streaming ETL Pipeline | Core mode deployed | N/A | Terraform core mode (MSK/S3/VPC/ECR) is ready; full EMR/MWAA/Redshift path is gated by account subscription enablement |
+| Streaming ETL Pipeline | Core mode live (shell infra implemented) | N/A (shell URL pending final apply) | Core Terraform path (MSK/S3/VPC/ECR) plus ECS/ALB shell resources are implemented; full EMR/MWAA/Redshift path remains gated by account subscription enablement |
 
-Health checks run on February 19, 2026:
+Health and functional checks run on February 19, 2026:
 - Retail root: `200`
 - Feature Flag `/api/health`: `200`
+- Feature Flag `/api/flags` with token + tenant: `200`
+- Feature Flag `/api/tenants/tenant-a/quotas` with token + tenant: `200`
 - Workflow Orchestrator `/api/health`: `200`
+- Workflow Orchestrator `/api/workflows` with token: `200`
+- Workflow live seed flow (`npm run demo:live-seed`): create/trigger succeeded
 
 ## Experience
 
@@ -65,16 +69,18 @@ Darlington, SC | May-Aug 2024 and May-Aug 2025
 - Distributed DAG execution with durable run/task state and Redis Streams workers.
 - Benchmark: 25/25 successful runs in 15.94s (1.57 runs/s).
 - Deployed on ECS Fargate with ALB, RDS Postgres, and ElastiCache Redis.
+- Live UI now supports create-workflow and trigger-run flows with deterministic seed tooling.
 
 ### Feature Flag Platform
 - Multi-tenant control plane, deterministic rollout logic, idempotency, and RBAC.
 - Admin UI plus SDK caching/refresh semantics for client-side evaluation.
 - Deployed on ECS Fargate with ALB, RDS Postgres, and ElastiCache Redis.
+- Live UI now supports explicit token/tenant context, seed flow, and verified create/publish/rollback behavior.
 
 ### Streaming ETL Pipeline
 - 100+ events/sec ingestion with Kafka and Spark Structured Streaming.
 - Medallion (Bronze/Silver/Gold) pipeline plus quality validation and monitoring.
-- Full Terraform stack includes MSK, EMR, MWAA, and Redshift Serverless.
+- Core mode is deployed today; public shell infrastructure is implemented for demos while full EMR/MWAA/Redshift remains entitlement-gated.
 
 ## Open Source Contributions
 

@@ -84,8 +84,8 @@ RESUME_VARIANTS = [
         ],
         "bullet_order": [2, 7, 6, 3],
         "oss_contributions": [
-            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
-            "PRs Under Review: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
+            "Open PRs: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
         ],
         "skills": (
             "C, C++, C#, Python | ESP32, FreeRTOS, Arduino, I2C, SPI, UART, ADC, PWM, DMA | "
@@ -111,7 +111,7 @@ RESUME_VARIANTS = [
             (
                 "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
                 "Implemented event-driven ingestion at 100+ events/sec with medallion data architecture, "
-                "quality validation, and production monitoring/alerting.",
+                "quality validation, and production monitoring/alerting; shipped core-mode AWS topology while full EMR/MWAA/Redshift remains entitlement-gated.",
             ),
             (
                 "<b>Retail Sales Forecasting Dashboard</b> - Python, XGBoost, FastAPI, AWS ECS",
@@ -121,7 +121,7 @@ RESUME_VARIANTS = [
         ],
         "bullet_order": [1, 3, 4, 5],
         "oss_contributions": [
-            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
+            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
             "Bloomberg comdb2 (C/Java): fixed JDBC metadata cursor isolation bug in PR #5731 to preserve active getTables() result sets during version lookup.",
             "Bloomberg comdb2 (C/C++/SQL): backported targeted SQLite security fixes for issue #3904 in PR #5743 (commit cede68b52); built from source, ran full test harness, reproduced failures by test ID, and published a security-fix verification matrix.",
         ],
@@ -157,8 +157,8 @@ RESUME_VARIANTS = [
         ],
         "bullet_order": [2, 1, 4, 5],
         "oss_contributions": [
-            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
-            "PRs Under Review: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
+            "Open PRs: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
         ],
         "skills": (
             "C#, .NET 8, ASP.NET Core, Blazor, Entity Framework | SQL Server, T-SQL, PostgreSQL, Redis | "
@@ -177,7 +177,7 @@ RESUME_VARIANTS = [
             (
                 "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
                 "Built streaming ETL with 100+ events/sec ingestion, data quality validation, "
-                "medallion architecture, production monitoring/alerting, and Terraform cloud topology across MSK/EMR/MWAA/Redshift with cost-aware core deployment mode.",
+                "medallion architecture, production monitoring/alerting, and core-mode AWS deployment across MSK/S3/VPC/ECR with public-shell infrastructure while full EMR/MWAA/Redshift remains entitlement-gated.",
             ),
             (
                 "<b>Event Stream Platform</b> - C#, .NET, WebSocket, WAL, Materialized Views",
@@ -192,9 +192,9 @@ RESUME_VARIANTS = [
         ],
         "bullet_order": [3, 1, 4, 6],
         "oss_contributions": [
-            "PicoClaw (Go): 3 merged PRs on a 14.5k-star project, including provider protocol-family refactor (#213) and security/model hardening follow-ups; invited to Dev Group.",
+            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
             "Bloomberg comdb2 (C/C++/SQL): backported targeted SQLite security fixes for issue #3904 in PR #5743 (commit cede68b52), with source-build validation, harness runs, and a published security-fix verification matrix.",
-            "PRs Under Review: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+            "Open PRs: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
         ],
         "skills": (
             "Python, SQL, PySpark, C# | Kafka, Airflow, Redshift, S3, Great Expectations | "

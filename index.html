@@ -356,7 +356,7 @@
     <header class="hero">
       <p class="tag">Software Engineer</p>
       <h1>Jared Mahotiere</h1>
-      <p class="sub">.NET and full-stack systems, data and ML engineering, embedded firmware. Shipped live AWS deployments across forecasting, feature flags, and workflow orchestration, plus production .NET services from Nucor internships. Available May 2026.</p>
+      <p class="sub">.NET and full-stack systems, data and ML engineering, embedded firmware. Shipped live AWS deployments across forecasting, feature flags, and workflow orchestration, plus core-mode Streaming ETL cloud delivery and production .NET services from Nucor internships. Available May 2026.</p>
       <div class="links">
         <a class="primary" href="https://www.linkedin.com/in/jared-mahotiere" target="_blank" rel="noopener">LinkedIn</a>
         <a class="secondary" href="https://github.com/jmahotiedu" target="_blank" rel="noopener">GitHub</a>
@@ -405,17 +405,18 @@
           <ul>
             <li>Implemented DAG validation, Redis Streams consumer groups, and Postgres durable run/task state.</li>
             <li>Added retry/backoff, dead-letter routing, and idempotency-key dedupe for reliability hardening.</li>
+            <li>Live UI supports workflow creation and run triggering, plus deterministic demo seeding for portfolio walkthroughs.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
         <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
           <h3>IoT Streaming ETL Pipeline</h3>
           <p class="stack">PySpark | Kafka | Airflow | Redshift | Great Expectations | Prometheus | Grafana | Terraform</p>
-          <p>Production-grade data engineering: 100+ events/sec from simulated sensors through Kafka, Spark, and a medallion data lake to a Redshift warehouse with full observability.</p>
+          <p>Production-grade data engineering: 100+ events/sec from simulated sensors through Kafka/Spark with medallion architecture, plus a core-mode cloud deployment path for live demos.</p>
           <ul>
             <li>100+ events/sec Kafka ingestion with PySpark Structured Streaming (10-min watermark, dead-letter queue).</li>
             <li>Medallion data lake (Bronze/Silver/Gold) with z-score anomaly detection and data lineage tracking.</li>
-            <li>Airflow orchestration with SLA monitoring; Grafana dashboard with 11 panels and 7 alert rules.</li>
+            <li>Core mode deploys MSK/S3/VPC/ECR now; full EMR/MWAA/Redshift execution path remains entitlement-gated.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
@@ -436,7 +437,7 @@
           <p>SLO-driven multi-tenant feature flag platform with deterministic rule and percentage rollout evaluation, JS SDK with local cache, and admin UI.</p>
           <ul>
             <li>Implemented idempotency middleware, RBAC, tenant quota controls, and audit logging.</li>
-            <li>Built load-test harness, operations docs, and live end-to-end smoke test suite.</li>
+            <li>Live UI includes token/tenant controls and seed flow; verified create/publish/rollback and quota endpoints in cloud smoke checks.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
@@ -503,6 +504,7 @@
           <p>Control-plane API and admin UI on ECS Fargate with managed data stores.</p>
           <ul>
             <li>Endpoint health: <code>/api/health</code> returned HTTP 200.</li>
+            <li>Functional checks: <code>/api/flags</code> and <code>/api/tenants/tenant-a/quotas</code> returned HTTP 200 with token + tenant context.</li>
             <li>Stack: ECS, ALB, RDS Postgres, ElastiCache Redis, ECR, Terraform.</li>
           </ul>
           <span class="link-hint">Open Endpoint &rarr;</span>
@@ -513,16 +515,18 @@
           <p>API, worker, and UI services deployed on ECS Fargate behind a shared ALB.</p>
           <ul>
             <li>Endpoint health: <code>/api/health</code> returned HTTP 200.</li>
+            <li>Functional checks: <code>/api/workflows</code> returned HTTP 200; live seed create/trigger flow succeeded.</li>
             <li>Stack: ECS, ALB, RDS Postgres, ElastiCache Redis, ECR, Terraform.</li>
           </ul>
           <span class="link-hint">Open Endpoint &rarr;</span>
         </a>
         <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Streaming ETL Pipeline</h3>
-          <p class="stack">Status: Core mode deployed</p>
-          <p>Terraform infrastructure is deployment-ready with cost-aware core mode for demos.</p>
+          <p class="stack">Status: Core mode live | Verified: Feb 19, 2026</p>
+          <p>Core infrastructure is deployed, and public shell infrastructure is implemented for demos while full managed services are gated.</p>
           <ul>
             <li>Core mode: MSK, S3 medallion buckets, VPC, ECR.</li>
+            <li>Shell path: ECS Fargate + ALB resources implemented; public shell URL pending final Terraform apply.</li>
             <li>Full mode: EMR/MWAA/Redshift pending account service subscription enablement.</li>
           </ul>
           <span class="link-hint">View Infrastructure &rarr;</span>
@@ -547,7 +551,7 @@
         </a>
         <a href="https://github.com/sipeed/picoclaw/pull/211" target="_blank" rel="noopener" class="project-card reveal">
           <h3>sipeed/picoclaw (PR #211)</h3>
-          <p class="stack">Go | Security Hardening | +285/-22 | State: Open (Approved)</p>
+          <p class="stack">Go | Security Hardening | +285/-22 | State: Open</p>
           <p>Security hardening and CI fixes: added config validation, Slack channel sanitization, cron service hardening, and follow-up review fixes (shared private-file writer, legacy-model no-key test, CI vet/race coverage with workspace generation, and upstream conflict resolution) across 12 files.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
