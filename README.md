@@ -47,7 +47,7 @@ Darlington, SC | May-Aug 2024 and May-Aug 2025
 
 | Project | Stack | Links |
 |--------|-------|-------|
-| Workflow Orchestrator | TypeScript, Node.js, Redis Streams, Postgres, React | [GitHub](https://github.com/jmahotiedu/workflow-orchestrator) / [Live](http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com) |
+| Workflow Orchestrator | TypeScript, Node.js, Redis Streams, Postgres, React | [GitHub](https://github.com/jmahotiedu/wf-orch) / [Live](http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com) |
 | IoT Streaming ETL Pipeline | Kafka, PySpark, Airflow, Redshift, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) |
 | Retail Forecast Dashboard | Python, XGBoost, FastAPI, Streamlit, AWS ECS | [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) / [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com) |
 | Feature Flag Platform | TypeScript, Node.js, Redis, React, Terraform | [GitHub](https://github.com/jmahotiedu/feature-flag-platform) / [Live](http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com) |
