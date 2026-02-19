@@ -177,7 +177,7 @@ RESUME_VARIANTS = [
             (
                 "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
                 "Built streaming ETL with 100+ events/sec ingestion, data quality validation, "
-                "medallion architecture, production monitoring/alerting, and core-mode AWS deployment across MSK/S3/VPC/ECR with public-shell infrastructure while full EMR/MWAA/Redshift remains entitlement-gated.",
+                "medallion architecture, production monitoring/alerting, and core-mode AWS deployment across MSK/S3/VPC/ECR with a live public shell while full EMR/MWAA/Redshift remains entitlement-gated.",
             ),
             (
                 "<b>Event Stream Platform</b> - C#, .NET, WebSocket, WAL, Materialized Views",

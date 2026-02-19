@@ -24,7 +24,7 @@ Open to full-time software roles starting May 2026.
 | Retail Forecast Dashboard | Live | http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com | ECS Fargate, ALB, ECR, Terraform |
 | Feature Flag Platform | Live | http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com | ECS Fargate (API/UI), RDS, ElastiCache, ALB, Terraform |
 | Workflow Orchestrator | Live | http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com | ECS Fargate (API/worker/UI), RDS, ElastiCache, ALB, Terraform |
-| Streaming ETL Pipeline | Core mode live (shell infra implemented) | N/A (shell URL pending final apply) | Core Terraform path (MSK/S3/VPC/ECR) plus ECS/ALB shell resources are implemented; full EMR/MWAA/Redshift path remains gated by account subscription enablement |
+| Streaming ETL Pipeline | Core mode live (public shell live) | http://streaming-etl-dash-demo-1722592003.us-east-1.elb.amazonaws.com | Core Terraform path (MSK/S3/VPC/ECR) with public ECS/ALB shell live; full EMR/MWAA/Redshift path remains gated by account subscription enablement |
 
 Health and functional checks run on February 19, 2026:
 - Retail root: `200`
@@ -34,6 +34,7 @@ Health and functional checks run on February 19, 2026:
 - Workflow Orchestrator `/api/health`: `200`
 - Workflow Orchestrator `/api/workflows` with token: `200`
 - Workflow live seed flow (`npm run demo:live-seed`): create/trigger succeeded
+- Streaming ETL shell root: `200`
 
 ## Experience
 
@@ -52,7 +53,7 @@ Darlington, SC | May-Aug 2024 and May-Aug 2025
 | Project | Stack | Links |
 |--------|-------|-------|
 | Workflow Orchestrator | TypeScript, Node.js, Redis Streams, Postgres, React | [GitHub](https://github.com/jmahotiedu/wf-orch) / [Live](http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com) |
-| IoT Streaming ETL Pipeline | Kafka, PySpark, Airflow, Redshift, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) |
+| IoT Streaming ETL Pipeline | Kafka, PySpark, Airflow, Redshift, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) / [Live Shell](http://streaming-etl-dash-demo-1722592003.us-east-1.elb.amazonaws.com) |
 | Retail Forecast Dashboard | Python, XGBoost, FastAPI, Streamlit, AWS ECS | [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) / [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com) |
 | Feature Flag Platform | TypeScript, Node.js, Redis, React, Terraform | [GitHub](https://github.com/jmahotiedu/feature-flag-platform) / [Live](http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com) |
 | cachekit | C11, POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
@@ -80,7 +81,7 @@ Darlington, SC | May-Aug 2024 and May-Aug 2025
 ### Streaming ETL Pipeline
 - 100+ events/sec ingestion with Kafka and Spark Structured Streaming.
 - Medallion (Bronze/Silver/Gold) pipeline plus quality validation and monitoring.
-- Core mode is deployed today; public shell infrastructure is implemented for demos while full EMR/MWAA/Redshift remains entitlement-gated.
+- Core mode is deployed today with a public shell URL live; full EMR/MWAA/Redshift remains entitlement-gated.
 
 ## Open Source Contributions
 
