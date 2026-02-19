@@ -6,6 +6,13 @@ Software Engineer - .NET, full-stack systems, data engineering, embedded systems
 
 ---
 
+## Live Cloud URLs
+
+- Retail Forecast Dashboard: `http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com`
+- Feature Flag Platform: `http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com`
+- Workflow Orchestrator: `http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com`
+- Streaming ETL Shell: `http://streaming-etl-dash-demo-1722592003.us-east-1.elb.amazonaws.com`
+
 ## About
 
 Software engineer graduating in May 2026 from Purdue University (BS Electrical Engineering Technology, Computer Engineering Technology concentration). Two summers at Nucor building production .NET services, real-time operator dashboards, and automated reporting for steel manufacturing operations.
