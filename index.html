@@ -400,44 +400,44 @@
       <div class="projects-grid">
         <a href="https://github.com/jmahotiedu/wf-orch" target="_blank" rel="noopener" class="project-card reveal">
           <h3>workflow-orchestrator</h3>
-          <p class="stack">TypeScript | Node.js | Postgres | Redis Streams | React</p>
-          <p>Built distributed workflow orchestration with lease/heartbeat recovery; benchmarked 25 runs in 15.94s (1.57 runs/s) with 0 failures.</p>
+          <p class="stack">TypeScript | Node.js | Redis Streams | PostgreSQL | AWS ECS</p>
+          <p>Distributed workflow engine with DAG validation, Redis Streams dispatch, durable Postgres run/task state, idempotent retries, and dead-letter handling.</p>
           <ul>
-            <li>Implemented DAG validation, Redis Streams consumer groups, and Postgres durable run/task state.</li>
-            <li>Added retry/backoff, dead-letter routing, and idempotency-key dedupe for reliability hardening.</li>
-            <li>Live UI supports workflow creation and run triggering, plus deterministic demo seeding for portfolio walkthroughs.</li>
+            <li>Benchmarked at 25/25 successful runs in 15.94s (1.57 runs/s).</li>
+            <li>AWS deployment validated on ECS Fargate with ALB, RDS, and ElastiCache, then deprovisioned to manage cost.</li>
+            <li>Includes deterministic demo seeding and reproducible deploy/teardown scripts.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
         <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
           <h3>IoT Streaming ETL Pipeline</h3>
-          <p class="stack">PySpark | Kafka | Airflow | Redshift | Great Expectations | Prometheus | Grafana | Terraform</p>
-          <p>Production-grade data engineering: 100+ events/sec from simulated sensors through Kafka/Spark with medallion architecture, plus a core-mode cloud deployment path for live demos.</p>
+          <p class="stack">Apache Kafka | PySpark | Airflow | Great Expectations | Terraform | AWS</p>
+          <p>Streaming ETL pipeline processing 100+ events/sec using Kafka and Spark Structured Streaming.</p>
           <ul>
-            <li>100+ events/sec Kafka ingestion with PySpark Structured Streaming (10-min watermark, dead-letter queue).</li>
-            <li>Medallion data lake (Bronze/Silver/Gold) with z-score anomaly detection and data lineage tracking.</li>
-            <li>Core mode deploys MSK/S3/VPC/ECR now; full EMR/MWAA/Redshift execution path remains entitlement-gated.</li>
+            <li>Implements Bronze/Silver/Gold architecture, checkpointed recovery, and validation via Great Expectations.</li>
+            <li>Prometheus/Grafana observability with production-style metrics and alert coverage.</li>
+            <li>Infrastructure provisioned with Terraform on AWS (MSK, S3, VPC, ECR); currently deprovisioned to manage cost.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
         <a href="http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Retail Sales Forecasting Dashboard</h3>
-          <p class="stack">Python | scikit-learn | XGBoost | Prophet | Streamlit | FastAPI | AWS ECS | Terraform</p>
-          <p>End-to-end ML pipeline: raw sales data to production forecasts and actionable customer segments, served via an interactive dashboard on AWS.</p>
+          <p class="stack">Python | FastAPI | XGBoost | AWS ECS | Terraform | SQL</p>
+          <p>End-to-end ML forecasting platform deployed on AWS ECS Fargate.</p>
           <ul>
-            <li>XGBoost model achieving 11% MAPE and R&sup2; = 0.91 on 6-week holdout across 1,115 stores.</li>
-            <li>K-means segmentation producing 4 actionable store clusters (silhouette &gt; 0.4).</li>
-            <li>Interactive 4-page Streamlit dashboard + FastAPI /predict endpoint, deployed on AWS ECS Fargate.</li>
+            <li>Achieved XGBoost R&sup2; = 0.91 and ~11% MAPE with production-oriented evaluation.</li>
+            <li>Backed by FastAPI inference, Streamlit UI, and Terraform-managed infrastructure.</li>
+            <li>Active live deployment with endpoint and health verification.</li>
           </ul>
           <span class="link-hint">Live Demo &rarr;</span>
         </a>
         <a href="https://github.com/jmahotiedu/feature-flag-platform" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Feature Flag Platform</h3>
-          <p class="stack">TypeScript | Node.js | Redis | React</p>
-          <p>SLO-driven multi-tenant feature flag platform with deterministic rule and percentage rollout evaluation, JS SDK with local cache, and admin UI.</p>
+          <p class="stack">TypeScript | Node.js | React | PostgreSQL | Redis | AWS ECS | Terraform</p>
+          <p>Multi-tenant feature flag control plane with deterministic rollout targeting, RBAC, idempotent writes, and publish/rollback workflows.</p>
           <ul>
-            <li>Implemented idempotency middleware, RBAC, tenant quota controls, and audit logging.</li>
-            <li>Live UI includes token/tenant controls and seed flow; verified create/publish/rollback and quota endpoints in cloud smoke checks.</li>
+            <li>Deployment was validated on AWS ECS Fargate behind ALB with RDS Postgres and ElastiCache Redis.</li>
+            <li>Currently deprovisioned to manage cost; reproducible with Terraform and deployment scripts.</li>
           </ul>
           <span class="link-hint">GitHub &rarr;</span>
         </a>
@@ -486,50 +486,51 @@
     </section>
     <section id="cloud">
       <p class="section-label">Cloud</p>
-      <h2>Live Deployment Status</h2>
+      <h2>Deployment Status</h2>
       <div class="projects-grid">
         <a href="http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Retail Forecast Dashboard</h3>
-          <p class="stack">Status: Live | Verified: Feb 19, 2026</p>
+          <p class="stack">Status: Live | Verified: Feb 24, 2026</p>
           <p>ECS Fargate service behind ALB with Terraform-managed AWS infrastructure.</p>
           <ul>
-            <li>Endpoint health: root returned HTTP 200.</li>
+            <li>Endpoint checks: <code>/</code>, <code>/docs</code>, and <code>/api/health</code> returned HTTP 200.</li>
             <li>Stack: ECS, ALB, ECR, CloudWatch, Terraform.</li>
           </ul>
           <span class="link-hint">Open Endpoint &rarr;</span>
         </a>
-        <a href="http://feature-flag-demo-alb-1145770048.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
+        <a href="https://github.com/jmahotiedu/feature-flag-platform" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Feature Flag Platform</h3>
-          <p class="stack">Status: Live | Verified: Feb 19, 2026</p>
-          <p>Control-plane API and admin UI on ECS Fargate with managed data stores.</p>
+          <p class="stack">Status: Deprovisioned | Last Verified: Feb 19, 2026</p>
+          <p>Control-plane API and admin UI were validated on ECS Fargate with managed data stores.</p>
           <ul>
-            <li>Endpoint health: <code>/api/health</code> returned HTTP 200.</li>
-            <li>Functional checks: <code>/api/flags</code> and <code>/api/tenants/tenant-a/quotas</code> returned HTTP 200 with token + tenant context.</li>
+            <li>Historical checks: <code>/api/health</code>, <code>/api/flags</code>, and <code>/api/tenants/tenant-a/quotas</code> returned HTTP 200.</li>
             <li>Stack: ECS, ALB, RDS Postgres, ElastiCache Redis, ECR, Terraform.</li>
+            <li>Deprovisioned after verification to manage cost; redeploy is scripted.</li>
           </ul>
-          <span class="link-hint">Open Endpoint &rarr;</span>
+          <span class="link-hint">View Repo &rarr;</span>
         </a>
-        <a href="http://workflow-orc-demo-alb-1577468805.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
+        <a href="https://github.com/jmahotiedu/wf-orch" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Workflow Orchestrator</h3>
-          <p class="stack">Status: Live | Verified: Feb 19, 2026</p>
-          <p>API, worker, and UI services deployed on ECS Fargate behind a shared ALB.</p>
+          <p class="stack">Status: Deprovisioned | Last Verified: Feb 19, 2026</p>
+          <p>API, worker, and UI services were validated on ECS Fargate behind ALB.</p>
           <ul>
-            <li>Endpoint health: <code>/api/health</code> returned HTTP 200.</li>
-            <li>Functional checks: <code>/api/workflows</code> returned HTTP 200; live seed create/trigger flow succeeded.</li>
+            <li>Historical checks: <code>/api/health</code> and <code>/api/workflows</code> returned HTTP 200; seed create/trigger flow succeeded.</li>
             <li>Stack: ECS, ALB, RDS Postgres, ElastiCache Redis, ECR, Terraform.</li>
+            <li>Deprovisioned after verification to manage cost; redeploy is scripted.</li>
           </ul>
-          <span class="link-hint">Open Endpoint &rarr;</span>
+          <span class="link-hint">View Repo &rarr;</span>
         </a>
-        <a href="http://streaming-etl-dash-demo-1722592003.us-east-1.elb.amazonaws.com" target="_blank" rel="noopener" class="project-card reveal">
+        <a href="https://github.com/jmahotiedu/streaming-etl-pipeline" target="_blank" rel="noopener" class="project-card reveal">
           <h3>Streaming ETL Pipeline</h3>
-          <p class="stack">Status: Core mode live | Verified: Feb 19, 2026</p>
-          <p>Core infrastructure and public shell are live for demos while full managed services remain entitlement-gated.</p>
+          <p class="stack">Status: Deprovisioned | Last Verified: Feb 19, 2026</p>
+          <p>Core infrastructure and shell path were validated; full managed services remain entitlement-gated.</p>
           <ul>
-            <li>Core mode: MSK, S3 medallion buckets, VPC, ECR.</li>
-            <li>Shell path: ECS Fargate + ALB live; shell endpoint returned HTTP 200.</li>
+            <li>Core mode scope: MSK, S3 medallion buckets, VPC, ECR.</li>
+            <li>Historical check: shell path on ECS Fargate + ALB returned HTTP 200.</li>
             <li>Full mode: EMR/MWAA/Redshift pending account service subscription enablement.</li>
+            <li>Deprovisioned after verification to manage cost; redeploy is scripted.</li>
           </ul>
-          <span class="link-hint">Open Endpoint &rarr;</span>
+          <span class="link-hint">View Repo &rarr;</span>
         </a>
       </div>
     </section>
@@ -538,21 +539,21 @@
       <h2>Pull Request Contributions</h2>
       <div class="projects-grid">
         <a href="https://github.com/sipeed/picoclaw/pull/213" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>sipeed/picoclaw (PR #213)</h3>
-          <p class="stack">Go | Provider Architecture | +1,798/-774 | State: Merged</p>
-          <p>Refactored providers by protocol family and completed review-requested hardening: shared protocol types, Anthropic <code>api_base</code> propagation, compatibility adapters, and expanded auth/routing/proxy tests across 13 files.</p>
+          <h3>PicoClaw - Open Source Contributor (PR #213)</h3>
+          <p class="stack">Go | Provider Architecture | +1,484/-676 | State: Merged</p>
+          <p>Merged provider protocol-family refactor with compatibility adapters, shared protocol typing, and expanded auth/routing test coverage across 11 files.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
         <a href="https://github.com/sipeed/picoclaw/pull/56" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>sipeed/picoclaw (PR #56)</h3>
+          <h3>PicoClaw - Open Source Contributor (PR #56)</h3>
           <p class="stack">Go | OAuth Device Flow | State: Merged</p>
-          <p>Fixed device-code login parsing for interval values returned as either strings or integers, added targeted tests, and improved headless authentication guidance.</p>
+          <p>Merged device-code auth interval parsing fix for string/integer polling values with targeted regression tests.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
         <a href="https://github.com/sipeed/picoclaw/pull/211" target="_blank" rel="noopener" class="project-card reveal">
-          <h3>sipeed/picoclaw (PR #211)</h3>
+          <h3>PicoClaw - Open Source Contributor (PR #211)</h3>
           <p class="stack">Go | Security Hardening | +285/-22 | State: Open</p>
-          <p>Security hardening and CI fixes: added config validation, Slack channel sanitization, cron service hardening, and follow-up review fixes (shared private-file writer, legacy-model no-key test, CI vet/race coverage with workspace generation, and upstream conflict resolution) across 12 files.</p>
+          <p>Active follow-up contribution focused on security hardening and CI reliability improvements; related Telegram handling updates are also under review in PR #251.</p>
           <span class="link-hint">Pull Request &rarr;</span>
         </a>
         <a href="https://github.com/bloomberg/comdb2/pull/5743" target="_blank" rel="noopener" class="project-card reveal">
