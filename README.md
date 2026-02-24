@@ -2,22 +2,24 @@
 
 **Software Engineer** - .NET & full-stack web, embedded systems, data engineering - Purdue EET '26
 
-[LinkedIn](https://linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive portfolio](https://jmahotiedu.github.io/jmahotiedu/)
+[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) - [GitHub](https://github.com/jmahotiedu) - [Interactive portfolio](https://jmahotiedu.github.io/jmahotiedu/)
 
 ---
 
 ## About
 
-Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization 70-90%, CI/testing), data science & engineering (Kafka, Spark, Airflow, ML forecasting), plus embedded systems (ESP32, FreeRTOS, binary protocols). Shipped production Next.js disaster-relief site; portfolio includes a live ML forecasting dashboard on AWS, a real-time streaming ETL pipeline, Redis-like cache (C), language interpreter (Python), real-time Kanban (Next.js/PostgreSQL), and ESP32 telemetry logger.
+Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL Server optimization, automated reporting), data science & engineering (Kafka, Spark, Airflow, ML forecasting), plus embedded systems (ESP32, FreeRTOS, binary protocols). Shipped production Next.js disaster-relief site; portfolio includes a live ML forecasting dashboard on AWS, a real-time streaming ETL pipeline, Redis-like cache (C), language interpreter (Python), real-time Kanban (Next.js/PostgreSQL), and ESP32 telemetry logger.
 
 ## Experience
 
 **Nucor Corporation** - *Software / Automation Engineering Intern* | Darlington, SC | May-Aug 2024; May-Aug 2025
 
-- Shipped Blazor/.NET real-time operator dashboards; improved process visibility with resilient UI state and consolidated KPI views.
-- Built C#/.NET services integrating SQL Server and QMOS; cut critical report runtimes by 70-90% via indexing and query refactors.
-- Delivered automated reporting/alerting with Quartz.NET (idempotency, retry/backoff) and migrated legacy Visual Basic apps to .NET/Blazor.
-- Added ~240 unit/integration tests (xUnit) and CI quality gates; health checks and structured logging for deployment confidence.
+- Developed and maintained Blazor/.NET real-time operator dashboards and robust back-end services, enhancing process transparency and improving steel production workflows.
+- Led system integration projects: scoped, specified, and coordinated implementation of new automation systems, ensuring seamless startup, cross-team adoption, and operational reliability.
+- Managed and analyzed production data in SQL Server/QMOS databases; developed optimized queries and recommended new tables/columns to support process improvement.
+- Built automated reporting and alert systems using Quartz.NET with real-time email notifications for maintenance and quality events, reducing manual monitoring and accelerating issue response.
+- Migrated legacy Visual Basic applications to .NET/Blazor, reducing technical debt and supporting future scalability/maintainability; utilized Git for code management across concurrent streams, peer code reviews, and codebase integrity.
+- Collaborated with production teams and led project meetings; conducted comprehensive testing and validation with multi-disciplinary stakeholders while prioritizing deliverables and shipping on time with high safety and quality standards.
 
 ## Projects
 
@@ -26,7 +28,7 @@ Entry-level SWE: .NET and full-stack web (real-time dashboards, SQL optimization
 | **Retail Sales Forecasting Dashboard** | Python, scikit-learn, XGBoost, Prophet, Streamlit, FastAPI, AWS ECS, Terraform | [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) / [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com) |
 | **IoT Streaming ETL Pipeline** | PySpark, Kafka, Airflow, Redshift, Great Expectations, Prometheus, Grafana, Terraform | [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline) |
 | **cachekit** | C (C11), POSIX, RESP | [GitHub](https://github.com/jmahotiedu/cachekit) |
-| **workflow-orchestrator** | TypeScript, Node.js, Postgres, Redis Streams, React | [GitHub](https://github.com/jmahotiedu/wf-orch) |
+| **workflow-orchestrator** | TypeScript, Node.js, Postgres, Redis Streams, React | [GitHub](https://github.com/jmahotiedu/workflow-orchestrator) |
 | **Telemetry Node** | ESP32, FreeRTOS, C, Python | [GitHub](https://github.com/jmahotiedu/telemetry-node) |
 | **syncboard** | Next.js 15, Socket.io, PostgreSQL, Prisma, NextAuth | [GitHub](https://github.com/jmahotiedu/syncboard) |
 | **Help Westmoreland** | Next.js 16, React 19, TypeScript, Tailwind v4 | [Live](https://jmahotiedu-help-westmoreland.vercel.app) |
