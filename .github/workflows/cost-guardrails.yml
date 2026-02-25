@@ -1,0 +1,81 @@
+name: AWS Cost Guardrails
+
+on:
+  schedule:
+    - cron: "30 13 * * *" # daily at 13:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cost-guardrails:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required secrets
+        id: preflight
+        shell: bash
+        run: |
+          missing=0
+          for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_REGION AWS_COST_ALERT_EMAILS; do
+            if [ -z "${!var}" ]; then
+              echo "Missing required secret: $var"
+              missing=1
+            fi
+          done
+          if [ "$missing" -eq 1 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_COST_ALERT_EMAILS: ${{ secrets.AWS_COST_ALERT_EMAILS }}
+
+      - name: Skip if secrets are missing
+        if: steps.preflight.outputs.ready != 'true'
+        run: |
+          echo "Required AWS secrets are missing. Skipping cost guardrail execution."
+
+      - name: Configure AWS credentials
+        if: steps.preflight.outputs.ready == 'true'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Run cost export
+        if: steps.preflight.outputs.ready == 'true'
+        shell: pwsh
+        run: |
+          $start = (Get-Date -Format "yyyy-MM-01")
+          $end = (Get-Date -Format "yyyy-MM-dd")
+          ./scripts/aws/cost_export.ps1 -StartDate $start -EndDate $end -Region "${{ secrets.AWS_REGION }}" -IncludeProjectTagBreakdown
+
+      - name: Run inventory guardrails
+        if: steps.preflight.outputs.ready == 'true'
+        shell: pwsh
+        run: |
+          ./scripts/aws/inventory_export.ps1 -Region "${{ secrets.AWS_REGION }}" -FailOnUnowned -FailOnActiveNonRetail
+
+      - name: Ensure budgets and anomaly alerts
+        if: steps.preflight.outputs.ready == 'true'
+        shell: pwsh
+        run: |
+          $emails = "${{ secrets.AWS_COST_ALERT_EMAILS }}".Split(",") | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" }
+          ./scripts/aws/setup_budgets.ps1 -AlertEmails $emails -Region "${{ secrets.AWS_REGION }}"
+
+      - name: Upload cost artifacts
+        if: always() && steps.preflight.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: aws-cost-guardrail-artifacts
+          path: reports/aws-cost/
+          if-no-files-found: warn

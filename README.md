@@ -46,6 +46,13 @@ Health and functional checks run on February 19, 2026:
 
 Feature Flag, Workflow Orchestrator, and Streaming ETL were deprovisioned after Feb 19 verification to manage cost. All are reproducible via Terraform and deployment scripts in their respective repos.
 
+### AWS Cost Guardrails (Updated February 25, 2026)
+
+- Default keep-list: only `retail-forecast-dashboard` remains live.
+- Automated cost/inventory tooling: `scripts/aws/cost_export.ps1`, `scripts/aws/inventory_export.ps1`, `scripts/aws/setup_budgets.ps1`.
+- Scheduled guardrail workflow: `.github/workflows/cost-guardrails.yml` (daily inventory/cost checks, budget/anomaly enforcement).
+- Guardrail policy: any active non-retail resources require explicit temporary exception with owner and expiry.
+
 ## Experience
 
 **Nucor Corporation** - Software / Automation Engineering Intern  
