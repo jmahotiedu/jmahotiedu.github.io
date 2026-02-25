@@ -1,0 +1,64 @@
+name: Graduation Text Update
+
+# Fires once around graduation and can be triggered manually.
+# Updates "Available May 2026" / "graduating May 2026" text in both files
+# once the graduation date has passed.
+
+on:
+  schedule:
+    - cron: "0 12 10 5 *"   # May 10 at noon UTC (annual — only takes action in 2026)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check if update is needed
+        id: check
+        run: |
+          # Only apply if the graduation placeholder text is still present
+          if grep -q "graduating May 2026\|Available May 2026\|starting May 2026\|Expected May 2026" index.html README.md; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+            echo "Graduation text already updated — nothing to do."
+          fi
+
+      - name: Update index.html
+        if: steps.check.outputs.needed == 'true'
+        run: |
+          # Hero subtitle: remove "Available May 2026." trailing sentence
+          sed -i 's/ Available May 2026\.//' index.html
+          # About section
+          sed -i 's/graduating May 2026/graduated May 2026/' index.html
+          sed -i 's/Available for full-time roles starting May 2026\./Available for full-time roles./' index.html
+          # Education section
+          sed -i 's/Expected May 2026/May 2026/' index.html
+
+      - name: Update README.md
+        if: steps.check.outputs.needed == 'true'
+        run: |
+          sed -i 's/graduating in May 2026/graduated in May 2026/' README.md
+          sed -i 's/Open to full-time software roles starting May 2026\./Open to full-time software roles./' README.md
+          sed -i 's/Available May 2026/Available now/' README.md
+          sed -i 's/Expected May 2026/May 2026/' README.md
+
+      - name: Commit changes
+        if: steps.check.outputs.needed == 'true'
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html README.md
+          git commit -m "chore: update graduation and availability text post-May 2026"
+          git push

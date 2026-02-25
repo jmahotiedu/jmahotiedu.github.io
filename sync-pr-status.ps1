@@ -10,12 +10,12 @@ function Write-Utf8NoBom {
         [Parameter(Mandatory = $true)][string]$Path,
         [Parameter(Mandatory = $true)][string]$Content
     )
-
     $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
     [System.IO.File]::WriteAllText($Path, $Content, $utf8NoBom)
 }
 
-function Get-PrStatus {
+# Fetches status, additions, and deletions for a PR in one API call.
+function Get-PrInfo {
     param(
         [Parameter(Mandatory = $true)][string]$Repo,
         [Parameter(Mandatory = $true)][int]$Number,
@@ -23,70 +23,67 @@ function Get-PrStatus {
     )
 
     $url = "https://api.github.com/repos/$Repo/pulls/$Number"
-    $response = Invoke-RestMethod -Uri $url -Headers $Headers -Method Get
+    $r = Invoke-RestMethod -Uri $url -Headers $Headers -Method Get
 
-    if ($null -ne $response.merged_at -and $response.merged_at -ne "") {
-        return "Merged"
+    $status = if ($null -ne $r.merged_at -and $r.merged_at -ne "") {
+        "Merged"
+    } elseif ($r.state -eq "closed") {
+        "Closed"
+    } else {
+        "Open"
     }
-    if ($response.state -eq "closed") {
-        return "Closed"
+
+    return @{
+        Status    = $status
+        Additions = [int]$r.additions
+        Deletions = [int]$r.deletions
     }
-    return "Open"
+}
+
+function Format-Stat([int]$n) {
+    return $n.ToString("N0")
 }
 
 $readmePath = Join-Path $RepoRoot "README.md"
-$indexPath = Join-Path $RepoRoot "index.html"
+$indexPath  = Join-Path $RepoRoot "index.html"
 
-if (-not (Test-Path -LiteralPath $readmePath)) {
-    throw "README not found: $readmePath"
-}
-if (-not (Test-Path -LiteralPath $indexPath)) {
-    throw "Index file not found: $indexPath"
-}
+if (-not (Test-Path -LiteralPath $readmePath)) { throw "README not found: $readmePath" }
+if (-not (Test-Path -LiteralPath $indexPath))  { throw "index.html not found: $indexPath" }
 
 $readmeText = Get-Content -LiteralPath $readmePath -Raw
-$indexText = Get-Content -LiteralPath $indexPath -Raw
-$combined = "$readmeText`n$indexText"
+$indexText  = Get-Content -LiteralPath $indexPath  -Raw
+$combined   = "$readmeText`n$indexText"
 
+# Discover every unique PR referenced across both files
 $prLinkPattern = "https://github\.com/(?<repo>[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)/pull/(?<num>\d+)"
-$prMatches = [regex]::Matches($combined, $prLinkPattern)
-if ($prMatches.Count -eq 0) {
-    throw "No pull request links found in README/index."
-}
+$prMatches     = [regex]::Matches($combined, $prLinkPattern)
+if ($prMatches.Count -eq 0) { throw "No pull request links found in README/index." }
 
 $prRefs = @{}
 foreach ($m in $prMatches) {
-    $repo = $m.Groups["repo"].Value
-    $num = [int]$m.Groups["num"].Value
-    $key = "$repo#$num"
+    $key = "$($m.Groups["repo"].Value)#$([int]$m.Groups["num"].Value)"
     if (-not $prRefs.ContainsKey($key)) {
-        $prRefs[$key] = @{
-            Repo = $repo
-            Number = $num
-        }
+        $prRefs[$key] = @{ Repo = $m.Groups["repo"].Value; Number = [int]$m.Groups["num"].Value }
     }
 }
 
+# Build auth headers
 $headers = @{
-    "User-Agent" = "jmahotiedu-pr-status-sync"
-    "Accept" = "application/vnd.github+json"
+    "User-Agent" = "jmahotiedu-pr-sync"
+    "Accept"     = "application/vnd.github+json"
 }
-$token = $env:GITHUB_TOKEN
-if ([string]::IsNullOrWhiteSpace($token)) {
-    $token = $env:GH_TOKEN
-}
-if (-not [string]::IsNullOrWhiteSpace($token)) {
-    $headers["Authorization"] = "Bearer $token"
-}
+$token = if ($env:GITHUB_TOKEN) { $env:GITHUB_TOKEN } else { $env:GH_TOKEN }
+if (-not [string]::IsNullOrWhiteSpace($token)) { $headers["Authorization"] = "Bearer $token" }
 
-$statusByKey = @{}
+# Fetch all PR info up front (one API call per unique PR)
+$infoByKey = @{}
 foreach ($entry in ($prRefs.GetEnumerator() | Sort-Object Name)) {
-    $repo = $entry.Value.Repo
-    $num = $entry.Value.Number
-    $key = "$repo#$num"
-    $statusByKey[$key] = Get-PrStatus -Repo $repo -Number $num -Headers $headers
+    $key = $entry.Name
+    $infoByKey[$key] = Get-PrInfo -Repo $entry.Value.Repo -Number $entry.Value.Number -Headers $headers
+    Write-Output "  Fetched $key -> $($infoByKey[$key].Status)  +$($infoByKey[$key].Additions)/-$($infoByKey[$key].Deletions)"
 }
 
+# ── README.md: update _(Status: X)_ labels ──────────────────────────────────
 $readmeChanged = $false
 $readmePattern = '(?m)^(?<prefix>- \*\*.+?\*\* - \[PR #(?<labelNum>\d+)\]\(https://github\.com/(?<repo>[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)/pull/(?<urlNum>\d+)\))(?<statusPart>(?: _\(Status: (?:Open|Closed|Merged)\)_)?)(?<suffix>: .*)$'
 $readmeUpdated = [regex]::Replace($readmeText, $readmePattern, {
@@ -97,75 +94,82 @@ $readmeUpdated = [regex]::Replace($readmeText, $readmePattern, {
     }
 
     $key = "$($m.Groups["repo"].Value)#$($m.Groups["urlNum"].Value)"
-    if (-not $statusByKey.ContainsKey($key)) {
-        throw "No fetched status found for README PR reference: $key"
-    }
+    if (-not $infoByKey.ContainsKey($key)) { throw "No fetched info for README PR: $key" }
 
-    $status = $statusByKey[$key]
+    $status      = $infoByKey[$key].Status
     $replacement = "$($m.Groups["prefix"].Value) _(Status: $status)_$($m.Groups["suffix"].Value)"
-    if ($replacement -ne $m.Value) {
-        $script:readmeChanged = $true
-    }
+    if ($replacement -ne $m.Value) { $script:readmeChanged = $true }
     return $replacement
 })
 
-$indexLines = Get-Content -LiteralPath $indexPath
+# ── index.html: update State: X and +N/-N diff stats ────────────────────────
+$indexLines   = Get-Content -LiteralPath $indexPath
 $indexChanged = $false
-$anchorPattern = '<a href="https://github\.com/(?<repo>[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)/pull/(?<num>\d+)"'
+$anchorPat    = '<a href="https://github\.com/(?<repo>[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)/pull/(?<num>\d+)"'
+$diffPat      = '\+[\d,]+/-[\d,]+'
 
 for ($i = 0; $i -lt $indexLines.Count; $i++) {
-    if ($indexLines[$i] -notmatch $anchorPattern) {
-        continue
-    }
+    if ($indexLines[$i] -notmatch $anchorPat) { continue }
 
     $key = "$($Matches["repo"])#$($Matches["num"])"
-    if (-not $statusByKey.ContainsKey($key)) {
-        throw "No fetched status found for index PR reference: $key"
-    }
+    if (-not $infoByKey.ContainsKey($key)) { throw "No fetched info for index.html PR: $key" }
 
-    $status = $statusByKey[$key]
+    $info      = $infoByKey[$key]
     $foundStack = $false
 
     for ($j = $i + 1; $j -lt [Math]::Min($indexLines.Count, $i + 16); $j++) {
-        if ($indexLines[$j] -match "</a>") {
-            break
+        if ($indexLines[$j] -match "</a>") { break }
+        if ($indexLines[$j] -notmatch '<p class="stack">') { continue }
+        if ($indexLines[$j] -notmatch '\| State:') { continue }
+
+        $line = $indexLines[$j]
+
+        # Update State
+        $line = [regex]::Replace($line, '(\| State:\s*)(Open|Closed|Merged)(</p>)', "`$1$($info.Status)`$3")
+
+        # Update +N/-N diff stat if one is already present in this card
+        if ($line -match $diffPat) {
+            $addFmt  = Format-Stat $info.Additions
+            $delFmt  = Format-Stat $info.Deletions
+            $line    = [regex]::Replace($line, $diffPat, "+$addFmt/-$delFmt")
         }
-        if ($indexLines[$j] -match '<p class="stack">' -and $indexLines[$j] -match '\| State:') {
-            $updated = [regex]::Replace($indexLines[$j], '(\| State:\s*)(Open|Closed|Merged)(</p>)', "`$1$status`$3")
-            if ($updated -ne $indexLines[$j]) {
-                $indexLines[$j] = $updated
-                $indexChanged = $true
-            }
-            $foundStack = $true
-            break
+
+        if ($line -ne $indexLines[$j]) {
+            $indexLines[$j] = $line
+            $indexChanged   = $true
         }
+        $foundStack = $true
+        break
     }
 
     if (-not $foundStack) {
-        throw "Could not find stack/state line after PR card anchor in index.html near line $($i + 1)."
+        throw "Could not find stack/state line for PR card near index.html line $($i + 1)."
     }
 }
 
+# ── Write ────────────────────────────────────────────────────────────────────
 if (-not $NoWrite) {
-    if ($readmeChanged) {
-        Write-Utf8NoBom -Path $readmePath -Content $readmeUpdated
-    }
-    if ($indexChanged) {
-        Write-Utf8NoBom -Path $indexPath -Content (($indexLines -join [Environment]::NewLine) + [Environment]::NewLine)
-    }
+    if ($readmeChanged) { Write-Utf8NoBom -Path $readmePath -Content $readmeUpdated }
+    if ($indexChanged)  { Write-Utf8NoBom -Path $indexPath  -Content (($indexLines -join [Environment]::NewLine) + [Environment]::NewLine) }
 }
 
+# ── Summary ──────────────────────────────────────────────────────────────────
 $summary = foreach ($entry in ($prRefs.GetEnumerator() | Sort-Object Name)) {
+    $info = $infoByKey[$entry.Name]
     [PSCustomObject]@{
-        Repo = $entry.Value.Repo
-        PR = $entry.Value.Number
-        Status = $statusByKey[$entry.Name]
+        Repo      = $entry.Value.Repo
+        PR        = $entry.Value.Number
+        Status    = $info.Status
+        Additions = $info.Additions
+        Deletions = $info.Deletions
     }
 }
 
 $summary | Format-Table -AutoSize | Out-String | Write-Output
-if ($readmeChanged -or $indexChanged) {
-    Write-Output "Updated files: $(if ($readmeChanged) { 'README.md ' } else { '' })$(if ($indexChanged) { 'index.html' } else { '' })"
+
+$updated = @(if ($readmeChanged) { "README.md" } if ($indexChanged) { "index.html" })
+if ($updated) {
+    Write-Output "Updated: $($updated -join ', ')"
 } else {
-    Write-Output "No status changes needed."
+    Write-Output "No changes needed."
 }

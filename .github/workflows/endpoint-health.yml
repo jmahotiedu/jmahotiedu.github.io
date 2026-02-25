@@ -1,0 +1,111 @@
+name: Endpoint Health Check
+
+on:
+  schedule:
+    - cron: "0 14 * * *"  # Daily at 14:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check retail forecast endpoint
+        id: health
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            --max-time 15 \
+            "http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com/api/health" \
+            || echo "000")
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          if [ "$STATUS" = "200" ]; then
+            echo "healthy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "healthy=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update verification dates
+        if: steps.health.outputs.healthy == 'true'
+        run: |
+          TODAY=$(date -u +"%b %-d, %Y")
+          # README: "Live (verified Feb 24, 2026)"
+          sed -i "s/Live (verified [A-Za-z]* [0-9]*, [0-9]*)/Live (verified $TODAY)/" README.md
+          # index.html: "Status: Live | Verified: Feb 24, 2026"
+          sed -i "s/Status: Live | Verified: [A-Za-z]* [0-9]*, [0-9]*/Status: Live | Verified: $TODAY/" index.html
+          echo "TODAY=$TODAY" >> "$GITHUB_ENV"
+
+      - name: Commit updated dates
+        if: steps.health.outputs.healthy == 'true'
+        run: |
+          if git diff --quiet; then
+            echo "No date changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md index.html
+          git commit -m "chore: update retail forecast verified date (${{ env.TODAY }})"
+          git push
+
+      - name: Open issue if endpoint is down
+        if: steps.health.outputs.healthy == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['endpoint-down'],
+            });
+            if (issues.length > 0) {
+              console.log(`Issue already open: ${issues[0].html_url}`);
+              return;
+            }
+            const status = '${{ steps.health.outputs.status }}';
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Retail Forecast endpoint not responding',
+              body: [
+                `Health check failed with HTTP status: \`${status}\``,
+                '',
+                '**URL:** `http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com/api/health`',
+                '',
+                'The portfolio currently shows this endpoint as Live. Either restart the ECS service or update the deployment status to Deprovisioned in `README.md` and `index.html`.',
+              ].join('\n'),
+              labels: ['endpoint-down'],
+            });
+
+      - name: Close resolved issue if endpoint is healthy
+        if: steps.health.outputs.healthy == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['endpoint-down'],
+            });
+            for (const issue of issues) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: 'Endpoint is healthy again. Closing automatically.',
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }

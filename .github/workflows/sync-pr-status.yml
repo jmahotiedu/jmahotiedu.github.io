@@ -15,8 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Sync README and portfolio PR states
+      - name: Sync PR statuses and diff stats
         shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./sync-pr-status.ps1 -RepoRoot .
 
       - name: Commit and push changes
@@ -29,5 +31,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md index.html
-          git commit -m "chore: sync PR contribution statuses"
+          git commit -m "chore: sync PR statuses and diff stats"
           git push

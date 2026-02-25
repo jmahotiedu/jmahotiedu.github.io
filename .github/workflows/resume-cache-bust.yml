@@ -1,0 +1,36 @@
+name: Resume Cache Bust
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "resumes/Jared_Mahotiere_Backend_Resume.pdf"
+
+permissions:
+  contents: write
+
+jobs:
+  cache-bust:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update version query param in index.html
+        run: |
+          TODAY=$(date -u +"%Y%m%d")
+          sed -i "s/Backend_Resume\.pdf?v=[0-9]*/Backend_Resume.pdf?v=${TODAY}/" index.html
+          echo "TODAY=$TODAY" >> "$GITHUB_ENV"
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet; then
+            echo "No cache-bust needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "chore: bump resume cache-buster to ${{ env.TODAY }}"
+          git push
