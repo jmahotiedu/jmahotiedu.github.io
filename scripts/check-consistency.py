@@ -76,10 +76,11 @@ CLOUD_PROJECTS = {
 }
 
 
-def parse_readme_statuses(readme: str) -> dict[str, str]:
+def parse_readme_statuses(readme: str) -> dict[str, str] | None:
     """
     Extract deployment statuses from the cloud table in README.md.
-    Returns {normalized_name: 'live'|'deprovisioned'}.
+    Returns {normalized_name: 'live'|'deprovisioned'}, or None if no
+    cloud status table is present (e.g. after README cleanup).
     """
     statuses: dict[str, str] = {}
     # Match table rows: | Project Name | Live ... | or | Deprovisioned ... |
@@ -88,7 +89,7 @@ def parse_readme_statuses(readme: str) -> dict[str, str]:
         status = m.group(2).lower()
         if name in CLOUD_PROJECTS:
             statuses[name] = status
-    return statuses
+    return statuses if statuses else None
 
 
 def parse_index_statuses(index: str) -> dict[str, str]:
@@ -119,6 +120,10 @@ def parse_index_statuses(index: str) -> dict[str, str]:
 def check_deployment_statuses(readme: str, index: str) -> None:
     readme_statuses = parse_readme_statuses(readme)
     index_statuses = parse_index_statuses(index)
+
+    if readme_statuses is None:
+        print("  OK: README.md has no cloud status table (statuses managed in index.html only)")
+        return
 
     all_projects = set(CLOUD_PROJECTS.keys())
 

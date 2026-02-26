@@ -45,10 +45,11 @@ jobs:
       - name: Update README.md
         if: steps.check.outputs.needed == 'true'
         run: |
-          sed -i 's/graduating in May 2026/graduated in May 2026/' README.md
-          sed -i 's/Open to full-time software roles starting May 2026\./Open to full-time software roles./' README.md
-          sed -i 's/Available May 2026/Available now/' README.md
+          sed -i 's/graduating May 2026/graduated May 2026/' README.md
+          sed -i 's/Available for full-time roles starting May 2026/Available for full-time roles/' README.md
+          sed -i 's/roles starting May 2026/roles/' README.md
           sed -i 's/Expected May 2026/May 2026/' README.md
+          sed -i "s/Purdue EET '26/Purdue EET '26 (graduated)/" README.md
 
       - name: Commit changes
         if: steps.check.outputs.needed == 'true'
