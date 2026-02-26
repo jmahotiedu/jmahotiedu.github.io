@@ -1,5 +1,5 @@
 """
-Generate four ATS-friendly, single-column, single-page resumes with reportlab.
+Generate ATS-friendly, single-column, single-page resumes with reportlab.
 """
 
 import os
@@ -31,7 +31,6 @@ LEADERSHIP_LINE = (
     "<b>Delta Tau Delta (Campus Chapter):</b> DEI Chair | "
     "<b>National Society of Black Engineers (NSBE):</b> Member"
 )
-
 NUCOR_BULLETS = {
     1: (
         "Developed and maintained Blazor/.NET real-time operator dashboards and robust "
@@ -75,17 +74,27 @@ RESUME_VARIANTS = [
                 "<b>Telemetry Node</b> - ESP32, FreeRTOS, C, Python",
                 "Built fixed-rate firmware telemetry with binary UART framing, CRC checks, "
                 "sensor sampling, and host-side decode tooling.",
+                "https://github.com/jmahotiedu/telemetry-node",
             ),
             (
                 "<b>cachekit</b> - C (C11), POSIX",
                 "Implemented a Redis-like cache server with RESP parsing, TCP event loop, "
                 "TTL expiration, and persistent snapshot support.",
+                "https://github.com/jmahotiedu/cachekit",
             ),
         ],
         "bullet_order": [2, 7, 6, 3],
         "oss_contributions": [
-            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
-            "Open PRs: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+            (
+                "<b>sipeed/picoclaw (PR #213)</b> - Go, Provider Architecture",
+                "Refactored provider protocol-family handling to harden multi-provider routing and reduce integration edge cases.",
+                "https://github.com/sipeed/picoclaw/pull/213",
+            ),
+            (
+                "<b>databricks/cli (PR #4504)</b> - Go, Auth/Config Resolution",
+                "Fixed bundle-context auth precedence so explicit host/profile inputs are honored for non-bundle commands.",
+                "https://github.com/databricks/cli/pull/4504",
+            ),
         ],
         "skills": (
             "C, C++, C#, Python | ESP32, FreeRTOS, Arduino, I2C, SPI, UART, ADC, PWM, DMA | "
@@ -104,26 +113,41 @@ RESUME_VARIANTS = [
         ),
         "projects": [
             (
-                "<b>workflow-orchestrator</b> - TypeScript, Node.js, Redis Streams, Postgres",
+                "<b>workflow-orchestrator</b> - TypeScript, Node.js, Redis Streams, PostgreSQL, AWS ECS",
                 "Built a distributed workflow engine with DAG validation, Redis Streams consumer groups, "
-                "idempotent retries, and durable Postgres run/task state; benchmarked 25/25 runs in 15.94s and deployed on AWS ECS Fargate with ALB/RDS/Redis.",
+                "idempotent retries, and durable Postgres run/task state; benchmarked 25/25 runs in 15.94s and validated AWS ECS Fargate deployment with ALB/RDS/ElastiCache.",
+                "https://github.com/jmahotiedu/wf-orch",
             ),
             (
-                "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
-                "Implemented event-driven ingestion at 100+ events/sec with medallion data architecture, "
-                "quality validation, and production monitoring/alerting; shipped core-mode AWS topology while full EMR/MWAA/Redshift remains entitlement-gated.",
+                "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Great Expectations, Terraform",
+                "Built streaming ETL processing 100+ events/sec with Bronze/Silver/Gold architecture, "
+                "checkpointed recovery, Great Expectations validation, and Prometheus/Grafana observability; provisioned AWS core infrastructure (MSK/S3/VPC/ECR) with Terraform.",
+                "https://github.com/jmahotiedu/streaming-etl-pipeline",
             ),
             (
-                "<b>Retail Sales Forecasting Dashboard</b> - Python, XGBoost, FastAPI, AWS ECS",
-                "Shipped a live forecasting product on AWS ECS; achieved XGBoost R2=0.91 and delivered "
-                "90%+ automated test coverage for API/model workflows.",
+                "<b>Retail Sales Forecasting Dashboard</b> - Python, FastAPI, XGBoost, Streamlit, AWS ECS",
+                "Shipped a live forecasting product on AWS ECS Fargate; achieved XGBoost R2=0.91 and ~11% MAPE with "
+                "FastAPI inference, Streamlit UI, and 90%+ automated test coverage.",
+                "https://github.com/jmahotiedu/retail-forecast-dashboard",
             ),
         ],
         "bullet_order": [1, 3, 4, 5],
         "oss_contributions": [
-            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
-            "Bloomberg comdb2 (C/Java): fixed JDBC metadata cursor isolation bug in PR #5731 to preserve active getTables() result sets during version lookup.",
-            "Bloomberg comdb2 (C/C++/SQL): backported targeted SQLite security fixes for issue #3904 in PR #5743 (commit cede68b52); built from source, ran full test harness, reproduced failures by test ID, and published a security-fix verification matrix.",
+            (
+                "<b>databricks/cli (PR #4504)</b> - Go, Auth/Config Governance",
+                "Fixed bundle-context auth precedence so explicit host/profile inputs win for non-bundle workspace commands.",
+                "https://github.com/databricks/cli/pull/4504",
+            ),
+            (
+                "<b>sipeed/picoclaw (PR #213)</b> - Go, Provider Architecture",
+                "Implemented protocol-family refactor to stabilize provider selection behavior and reduce edge-case failures.",
+                "https://github.com/sipeed/picoclaw/pull/213",
+            ),
+            (
+                "<b>bloomberg/comdb2 (PR #5743)</b> - C/C++, SQLite Security",
+                "Backported targeted SQLite security fixes and validated behavior with source-build and harness verification.",
+                "https://github.com/bloomberg/comdb2/pull/5743",
+            ),
         ],
         "skills": (
             "Languages: C, C#, TypeScript, Python, Java | Backend: .NET, ASP.NET Core, Node.js, Express, "
@@ -145,20 +169,30 @@ RESUME_VARIANTS = [
                 "deterministic backfill tooling, and production observability.",
             ),
             (
-                "<b>Feature Flag Platform</b> - TypeScript, Node.js, Redis, React",
-                "Built multi-tenant control-plane patterns including deterministic rollout logic, "
-                "RBAC, idempotency, operational observability, and a reproducible load-test harness; deployed on AWS ECS Fargate with ALB, RDS Postgres, and ElastiCache Redis.",
+                "<b>Feature Flag Platform</b> - TypeScript, Node.js, React, PostgreSQL, Redis, Terraform",
+                "Built a multi-tenant feature flag control plane with deterministic rollout targeting, "
+                "RBAC, idempotent writes, publish/rollback workflows, and reproducible load-test coverage; validated AWS ECS Fargate deployment behind ALB with RDS Postgres and ElastiCache Redis.",
+                "https://github.com/jmahotiedu/feature-flag-platform",
             ),
             (
-                "<b>workflow-orchestrator</b> - TypeScript, Redis Streams, Postgres",
+                "<b>workflow-orchestrator</b> - TypeScript, Node.js, Redis Streams, PostgreSQL",
                 "Implemented queue-driven orchestration with DAG validation, durable run/task state, "
-                "worker retries, and dead-letter handling for reliability.",
+                "worker retries, dead-letter handling, and benchmarked execution reliability (25/25 runs in 15.94s).",
+                "https://github.com/jmahotiedu/wf-orch",
             ),
         ],
         "bullet_order": [2, 1, 4, 5],
         "oss_contributions": [
-            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
-            "Open PRs: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+            (
+                "<b>sipeed/picoclaw (PR #213)</b> - Go, Provider Architecture",
+                "Refactored provider protocol-family routing to simplify backend integration and improve execution safety.",
+                "https://github.com/sipeed/picoclaw/pull/213",
+            ),
+            (
+                "<b>databricks/cli (PR #4504)</b> - Go, Auth/Config Resolution",
+                "Fixed auth-resolution precedence so explicit host/profile selections override inherited bundle context.",
+                "https://github.com/databricks/cli/pull/4504",
+            ),
         ],
         "skills": (
             "C#, .NET 8, ASP.NET Core, Blazor, Entity Framework | SQL Server, T-SQL, PostgreSQL, Redis | "
@@ -175,9 +209,10 @@ RESUME_VARIANTS = [
         ),
         "projects": [
             (
-                "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Redshift",
-                "Built streaming ETL with 100+ events/sec ingestion, data quality validation, "
-                "medallion architecture, production monitoring/alerting, and core-mode AWS deployment across MSK/S3/VPC/ECR with a live public shell while full EMR/MWAA/Redshift remains entitlement-gated.",
+                "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Great Expectations, Terraform",
+                "Built streaming ETL with 100+ events/sec ingestion, Bronze/Silver/Gold architecture, "
+                "checkpointed recovery, Great Expectations validation, and Prometheus/Grafana observability; provisioned AWS core infrastructure across MSK/S3/VPC/ECR with Terraform.",
+                "https://github.com/jmahotiedu/streaming-etl-pipeline",
             ),
             (
                 "<b>Event Stream Platform</b> - C#, .NET, WebSocket, WAL, Materialized Views",
@@ -185,21 +220,84 @@ RESUME_VARIANTS = [
                 "backfill/reconciliation workflows, and data-quality observability.",
             ),
             (
-                "<b>Retail Sales Forecasting Dashboard</b> - Python, XGBoost, Prophet, Streamlit, AWS ECS",
-                "Shipped a live forecasting product on AWS ECS with XGBoost R2=0.91, 11% MAPE, production "
-                "API/dashboard deployment, and 90%+ automated test coverage.",
+                "<b>Retail Sales Forecasting Dashboard</b> - Python, FastAPI, XGBoost, Streamlit, AWS ECS",
+                "Shipped a live forecasting product on AWS ECS Fargate with XGBoost R2=0.91 and ~11% MAPE, "
+                "FastAPI inference, Streamlit dashboard delivery, and 90%+ automated test coverage.",
+                "https://github.com/jmahotiedu/retail-forecast-dashboard",
             ),
         ],
         "bullet_order": [3, 1, 4, 6],
         "oss_contributions": [
-            "PicoClaw (Go): merged PRs include provider protocol-family refactor (#213) and device-code auth interval fix (#56); security/reliability follow-up PRs remain open (#211, #251).",
-            "Bloomberg comdb2 (C/C++/SQL): backported targeted SQLite security fixes for issue #3904 in PR #5743 (commit cede68b52), with source-build validation, harness runs, and a published security-fix verification matrix.",
-            "Open PRs: Databricks CLI (#4504) auth-resolution fix; Google langextract (#359) cache-key hashing fix.",
+            (
+                "<b>bloomberg/comdb2 (PR #5743)</b> - C/C++, SQLite Security",
+                "Backported targeted SQLite security fixes and validated source-build behavior with harness-backed checks.",
+                "https://github.com/bloomberg/comdb2/pull/5743",
+            ),
+            (
+                "<b>databricks/cli (PR #4504)</b> - Go, Auth/Config Resolution",
+                "Corrected bundle-context precedence to prevent non-bundle commands from resolving to the wrong workspace.",
+                "https://github.com/databricks/cli/pull/4504",
+            ),
+            (
+                "<b>google/langextract (PR #359)</b> - Python, Caching",
+                "Fixed cache-key hashing behavior to improve deterministic extraction and avoid cache collisions.",
+                "https://github.com/google/langextract/pull/359",
+            ),
         ],
         "skills": (
             "Python, SQL, PySpark, C# | Kafka, Airflow, Redshift, S3, Great Expectations | "
             "PostgreSQL, SQL Server, Redis | scikit-learn, XGBoost, Prophet, pandas, Streamlit | "
             "Docker, Terraform, GitHub Actions, AWS (ECS, ALB, RDS, ElastiCache, ECR, MSK, EMR, MWAA)"
+        ),
+        "coursework": None,
+    },
+    {
+        "filename": "Jared_Mahotiere_Databricks_Platform_Engineer_Resume.pdf",
+        "summary": (
+            "Backend/platform engineer (Purdue '26) focused on shared data-platform reliability, Terraform multi-environment IaC, "
+            "Python automation, and CI/CD governance; open-source contributor to Databricks CLI/SDK with fixes for auth precedence and config inheritance failure modes."
+        ),
+        "projects": [
+            (
+                "<b>Databricks Platform Tooling (Open Source)</b> - Go, Python, Databricks CLI/SDK",
+                "Implemented Databricks CLI PR #4504 to fix auth-resolution precedence in bundle context so explicit host/profile inputs win for non-bundle commands, "
+                "preventing wrong-environment execution; added regression tests and iterated the precedence model with maintainers after issue #4502 and a reported 1-hour troubleshooting incident.",
+                "https://github.com/pulls?q=is%3Apr+author%3Ajmahotiedu+repo%3Adatabricks%2Fcli+repo%3Adatabricks%2Fdatabricks-sdk-py",
+            ),
+            (
+                "<b>IoT Streaming ETL Pipeline</b> - Kafka, PySpark, Airflow, Great Expectations, Terraform",
+                "Built a 100+ events/sec streaming platform with checkpointed recovery, data-quality gates, and "
+                "Prometheus/Grafana observability; provisioned AWS MSK/S3/VPC/ECR via reusable Terraform workflows and environment-safe deployment patterns.",
+                "https://github.com/jmahotiedu/streaming-etl-pipeline",
+            ),
+            (
+                "<b>workflow-orchestrator</b> - TypeScript, Node.js, Redis Streams, PostgreSQL, AWS ECS",
+                "Implemented reliable DAG orchestration with idempotent retries, dead-letter handling, and durable task state; "
+                "benchmarked 25/25 successful runs in 15.94s and operated ECS Fargate deployment with ALB/RDS/ElastiCache.",
+                "https://github.com/jmahotiedu/wf-orch",
+            ),
+        ],
+        "bullet_order": [4, 2, 3, 6],
+        "oss_contributions": [
+            (
+                "<b>databricks/cli (PR #4504)</b> - Go, Auth Precedence",
+                "Implemented precedence fixes so explicit host/profile inputs are respected for non-bundle commands.",
+                "https://github.com/databricks/cli/pull/4504",
+            ),
+            (
+                "<b>databricks/databricks-sdk-py (PR #1258)</b> - Python, Config Introspection",
+                "Fixed Config subclass attribute discovery/caching regressions that impacted auth and profile resolution.",
+                "https://github.com/databricks/databricks-sdk-py/pull/1258",
+            ),
+            (
+                "<b>bloomberg/comdb2 (PR #5731)</b> - Java, JDBC Metadata",
+                "Resolved metadata cursor-isolation behavior to prevent cross-query cursor bleed in JDBC client flows.",
+                "https://github.com/bloomberg/comdb2/pull/5731",
+            ),
+        ],
+        "skills": (
+            "Databricks tooling (CLI/SDK), auth/config governance, Python automation, Terraform (multi-env IaC/modules) | AWS (IAM, VPC, ECS, RDS, S3, MSK), "
+            "SQL Server/QMOS, PostgreSQL, Redis | CI/CD (GitHub Actions), Linux shell, runbooks, observability (CloudWatch, Prometheus, Grafana)"
         ),
         "coursework": None,
     },
@@ -302,12 +400,33 @@ def build_resume(variant, output_dir):
         story.append(Paragraph(NUCOR_BULLETS[bullet_id], styles["bullet"], bulletText="\u2022"))
 
     story.append(Paragraph("PROJECTS", styles["section"]))
-    for title, bullet in variant["projects"]:
-        story.append(Paragraph(title, styles["body_bold"]))
+    for project in variant["projects"]:
+        if len(project) == 3:
+            title, bullet, url = project
+        else:
+            title, bullet = project
+            url = None
+
+        title_with_link = title
+        if url:
+            title_with_link = f'{title} | <link href="{url}">Project Link</link>'
+
+        story.append(Paragraph(title_with_link, styles["body_bold"]))
         story.append(Paragraph(bullet, styles["bullet"], bulletText="\u2022"))
 
     story.append(Paragraph("OPEN SOURCE CONTRIBUTIONS", styles["section"]))
-    for bullet in variant["oss_contributions"]:
+    for contribution in variant["oss_contributions"]:
+        if len(contribution) == 3:
+            title, bullet, url = contribution
+        else:
+            title, bullet = contribution
+            url = None
+
+        title_with_link = title
+        if url:
+            title_with_link = f'{title} | <link href="{url}">Project Link</link>'
+
+        story.append(Paragraph(title_with_link, styles["body_bold"]))
         story.append(Paragraph(bullet, styles["bullet"], bulletText="\u2022"))
 
     story.append(Spacer(1, 0.05 * inch))
@@ -341,7 +460,7 @@ def main():
         shutil.copy2(generated, desktop_copy)
         print(f"Copied:    {desktop_copy}")
 
-    print("Done: generated all four resume PDFs.")
+    print("Done: generated all resume PDFs.")
 
 
 if __name__ == "__main__":

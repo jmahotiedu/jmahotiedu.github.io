@@ -1,6 +1,11 @@
 name: AWS Cost Guardrails
 
 on:
+  pull_request:
+    paths:
+      - "scripts/aws/**"
+      - ".github/workflows/cost-guardrails.yml"
+      - "**/terraform/**"
   schedule:
     - cron: "30 13 * * *" # daily at 13:30 UTC
   workflow_dispatch:
@@ -58,6 +63,57 @@ jobs:
           $start = (Get-Date -Format "yyyy-MM-01")
           $end = (Get-Date -Format "yyyy-MM-dd")
           ./scripts/aws/cost_export.ps1 -StartDate $start -EndDate $end -Region "${{ secrets.AWS_REGION }}" -IncludeProjectTagBreakdown
+
+      - name: Publish cost summary
+        if: steps.preflight.outputs.ready == 'true'
+        shell: pwsh
+        run: |
+          $path = "reports/aws-cost/latest-cost-by-service.csv"
+          if (-not (Test-Path $path)) {
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## Estimated Cost Impact`nNo cost export artifact found."
+            exit 0
+          }
+
+          $rows = Import-Csv $path
+          if ($rows.Count -eq 0) {
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## Estimated Cost Impact`nCost export returned no rows."
+            exit 0
+          }
+
+          $normalized = foreach ($r in $rows) {
+            [pscustomobject]@{
+              service          = $r.service
+              total_amount_usd = [decimal]$r.total_amount_usd
+            }
+          }
+
+          $top = $normalized | Sort-Object total_amount_usd -Descending | Select-Object -First 10
+          $total = ($normalized | Measure-Object -Property total_amount_usd -Sum).Sum
+          $changed = @()
+          if ('${{ github.event_name }}' -eq 'pull_request') {
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            $changed = git diff --name-only "origin/${{ github.base_ref }}...HEAD" | Where-Object { $_ -match 'terraform|scripts/aws|workflows/cost-guardrails' }
+          }
+
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## Estimated Cost Impact"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ""
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ("Current monthly unblended cost baseline (top services): **${0} USD** total." -f ([Math]::Round([decimal]$total, 2)))
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ""
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| Service | Amount (USD) |"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "| --- | ---: |"
+          foreach ($row in $top) {
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ("| {0} | {1} |" -f $row.service, ([Math]::Round([decimal]$row.total_amount_usd, 2)))
+          }
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ""
+          if ($changed.Count -gt 0) {
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "Infra-related changed files in this PR:"
+            foreach ($file in $changed) {
+              Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ("- `{0}`" -f $file)
+            }
+          }
+          else {
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "No infra-related file changes detected in PR diff."
+          }
 
       - name: Run inventory guardrails
         if: steps.preflight.outputs.ready == 'true'
