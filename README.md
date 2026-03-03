@@ -36,10 +36,10 @@ Darlington, SC | May--Aug 2024, May--Aug 2025
 
 ## Projects
 
-### Retail Forecast Dashboard -- [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) | [Live](http://retail-forecast-alb-104304097.us-east-1.elb.amazonaws.com)
+### Retail Forecast Dashboard -- [GitHub](https://github.com/jmahotiedu/retail-forecast-dashboard) 
 `Python | FastAPI | XGBoost | Streamlit | AWS ECS Fargate | Terraform`
 - End-to-end ML forecasting platform: XGBoost R^2 = 0.91, ~11% MAPE.
-- Deployed on ECS Fargate behind ALB with Terraform-managed infra. **Currently live.**
+- Deployed on ECS Fargate behind ALB with Terraform-managed infra. 
 - 90%+ automated test coverage across API and model workflows.
 
 ### Workflow Orchestrator -- [GitHub](https://github.com/jmahotiedu/wf-orch)
@@ -137,3 +137,4 @@ Relevant coursework: Embedded Digital Systems, Advanced Embedded Systems, DSP, A
 Bear, DE | [jmahotie@purdue.edu](mailto:jmahotie@purdue.edu) | [LinkedIn](https://www.linkedin.com/in/jared-mahotiere)
 
 Open to software engineering, data engineering, full-stack, backend, and embedded systems roles starting May 2026.
+
