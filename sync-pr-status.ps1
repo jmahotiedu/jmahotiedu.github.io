@@ -147,6 +147,105 @@ for ($i = 0; $i -lt $indexLines.Count; $i++) {
     }
 }
 
+# ── README.md: sync PR table rows between ### Merged / ### Open sections ─────
+# Pattern: | **owner/repo** | [#N](url) | summary |
+$tableRowPat = '^\| \*\*(?<repo>[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]+)\*\* \| \[#(?<num>\d+)\]\(https://github\.com/[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]+/pull/\d+\) \| (?<summary>.+?) \|$'
+
+$readmeLines = $readmeUpdated -split '\r?\n'
+
+# Locate section boundaries
+$mergedHeaderIdx = -1
+$openHeaderIdx   = -1
+for ($i = 0; $i -lt $readmeLines.Count; $i++) {
+    if ($readmeLines[$i] -eq '### Merged') { $mergedHeaderIdx = $i }
+    if ($readmeLines[$i] -eq '### Open')   { $openHeaderIdx   = $i }
+}
+
+if ($mergedHeaderIdx -ge 0 -and $openHeaderIdx -gt $mergedHeaderIdx) {
+    # Collect table rows from each section (skip header and separator lines)
+    $mergedRows = [System.Collections.Generic.List[string]]::new()
+    $openRows   = [System.Collections.Generic.List[string]]::new()
+
+    # --- rows currently under ### Merged ---
+    for ($i = $mergedHeaderIdx + 1; $i -lt $openHeaderIdx; $i++) {
+        $line = $readmeLines[$i]
+        if ($line -match $tableRowPat) { $mergedRows.Add($line) }
+    }
+
+    # --- rows currently under ### Open ---
+    # The Open section ends at the next blank line after the table body
+    $openEnd = $readmeLines.Count
+    for ($i = $openHeaderIdx + 1; $i -lt $readmeLines.Count; $i++) {
+        $line = $readmeLines[$i]
+        # A blank line after at least one data row signals the end of the table
+        if ($line.Trim() -eq '' -and $openRows.Count -gt 0) { $openEnd = $i; break }
+        if ($line -match $tableRowPat) { $openRows.Add($line) }
+    }
+
+    # Combine and re-sort by live status
+    $allRows = [System.Collections.Generic.List[string]]::new()
+    $allRows.AddRange($mergedRows)
+    $allRows.AddRange($openRows)
+
+    $newMerged = [System.Collections.Generic.List[string]]::new()
+    $newOpen   = [System.Collections.Generic.List[string]]::new()
+
+    foreach ($row in $allRows) {
+        if ($row -notmatch $tableRowPat) { continue }
+        $repo = $Matches['repo']
+        $num  = [int]$Matches['num']
+        $key  = "${repo}#${num}"
+        if (-not $infoByKey.ContainsKey($key)) {
+            # Key not in fetched data — preserve in its current section
+            if ($mergedRows.Contains($row)) { $newMerged.Add($row) } else { $newOpen.Add($row) }
+            continue
+        }
+        switch ($infoByKey[$key].Status) {
+            'Merged'  { $newMerged.Add($row) }
+            'Open'    { $newOpen.Add($row) }
+            'Closed'  { $script:readmeChanged = $true }   # drop closed-not-merged rows
+        }
+    }
+
+    # Detect movement between sections
+    $mergedSame = ($mergedRows.Count -eq $newMerged.Count) -and
+                  (-not (Compare-Object $mergedRows.ToArray() $newMerged.ToArray()))
+    $openSame   = ($openRows.Count -eq $newOpen.Count) -and
+                  (-not (Compare-Object $openRows.ToArray() $newOpen.ToArray()))
+    if (-not $mergedSame -or -not $openSame) { $readmeChanged = $true }
+
+    # Rebuild file lines with corrected tables
+    $tableHeader    = '| Repo | PR | Summary |'
+    $tableSeparator = '|------|----|---------|'
+
+    $newLines = [System.Collections.Generic.List[string]]::new()
+    for ($i = 0; $i -lt $readmeLines.Count; $i++) {
+        if ($i -eq $mergedHeaderIdx) {
+            $newLines.Add($readmeLines[$i])          # ### Merged
+            $newLines.Add('')
+            $newLines.Add($tableHeader)
+            $newLines.Add($tableSeparator)
+            foreach ($r in $newMerged) { $newLines.Add($r) }
+            # Skip original merged section (up to but not including ### Open line)
+            $i = $openHeaderIdx - 1
+            continue
+        }
+        if ($i -eq $openHeaderIdx) {
+            $newLines.Add($readmeLines[$i])           # ### Open
+            $newLines.Add('')
+            $newLines.Add($tableHeader)
+            $newLines.Add($tableSeparator)
+            foreach ($r in $newOpen) { $newLines.Add($r) }
+            # Skip original open section rows
+            $i = $openEnd - 1
+            continue
+        }
+        $newLines.Add($readmeLines[$i])
+    }
+
+    $readmeUpdated = $newLines -join "`n"
+}
+
 # ── Write ────────────────────────────────────────────────────────────────────
 if (-not $NoWrite) {
     if ($readmeChanged) { Write-Utf8NoBom -Path $readmePath -Content $readmeUpdated }
