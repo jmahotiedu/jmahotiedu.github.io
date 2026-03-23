@@ -26,11 +26,10 @@ Software engineer graduating May 2026 from Purdue University (BS EET, Computer E
 **Nucor Corporation** -- Software / Automation Engineering Intern  
 Darlington, SC | May--Aug 2024, May--Aug 2025
 
-- Developed Blazor/.NET real-time operator dashboards and backend services used daily in steel production.
-- Led automation integration from scoping through startup and cross-team handoff.
-- Optimized SQL Server/QMOS queries and recommended schema changes to support process improvement.
-- Built Quartz.NET automated reporting with real-time email alerts, reducing manual monitoring.
-- Migrated legacy VB applications to .NET/Blazor, cutting technical debt across concurrent codebases.
+- **Hold Disposition Management System** -- Flagship Level 2 production app: dual-database integration (Oracle QMOS process historian + SQL Server), Blazor Server SPA with Telerik UI data grids, Quartz.NET automated reporting to downstream business systems. Replaced a fully manual hold coordination process. Live daily in production at NSSC.
+- **Grade Bonus System Modernization** -- Found silent data integrity failures in legacy VB.NET system producing incorrect bonus calculations. Rebuilt from scratch in C# ASP.NET with proper validation and SQL Server backend redesign; caught two critical edge cases the original system silently mishandled.
+- Full SDLC ownership (requirements, design, implementation, deployment, operator training) on systems running 24/7 in live steel production.
+- Optimized SQL Server/QMOS queries and schema to support process improvement initiatives.
 
 ---
 
@@ -50,7 +49,7 @@ Darlington, SC | May--Aug 2024, May--Aug 2025
 
 ### Feature Flag Platform -- [GitHub](https://github.com/jmahotiedu/feature-flag-platform)
 `TypeScript | Node.js | React | PostgreSQL | Redis | AWS ECS | Terraform`
-- Multi-tenant control plane with deterministic rollout, RBAC, idempotent writes, and publish/rollback.
+- Multi-tenant control plane with deterministic rollout targeting, RBAC, idempotent writes, and publish/rollback workflows.
 - Smoke-tested create/publish/rollback flows on live ECS deployment before teardown.
 
 ### IoT Streaming ETL Pipeline -- [GitHub](https://github.com/jmahotiedu/streaming-etl-pipeline)
@@ -75,6 +74,10 @@ Darlington, SC | May--Aug 2024, May--Aug 2025
 ### Telemetry Node -- [GitHub](https://github.com/jmahotiedu/telemetry-node)
 `ESP32 | FreeRTOS | C | Python`
 - Embedded telemetry logger: 25-byte UART frames with CRC16, 9 sensor fields, Python CSV decode tooling.
+
+### rift -- [GitHub](https://github.com/jmahotiedu/rift)
+`Python`
+- Tree-walking interpreter for a custom programming language: lexer, parser, closures, classes, inheritance, REPL.
 
 ---
 
@@ -116,7 +119,7 @@ Darlington, SC | May--Aug 2024, May--Aug 2025
 ## Education
 
 **Purdue University** -- B.S. Electrical Engineering Technology (Computer Engineering Technology)  
-Minor: Computer & IT | Certificate: Entrepreneurship & Innovation | Expected May 2026
+Minor: Computer & IT | Certificate: Entrepreneurship & Innovation | Expected May 2026 | GPA: 3.18 (Semester Honors Fall 2025)
 
 Relevant coursework: Embedded Digital Systems, Advanced Embedded Systems, DSP, Advanced DSP, Industrial Controls, DAQ, Wireless Communications, Systems Development, IT Architecture, Network Engineering.
 
