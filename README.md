@@ -2,7 +2,7 @@
 
 **Software Engineer** | .NET, Full-Stack, Data Engineering, Embedded Systems | Purdue EET '26
 
-[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) | [Portfolio](https://jmahotiedu.github.io/) | [GitHub](https://github.com/jmahotiedu) | [Resume (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
+[LinkedIn](https://www.linkedin.com/in/jared-mahotiere) | [Portfolio](https://jmahotiedu.github.io/) | [GitHub](https://github.com/jmahotiedu) | [Resume (PDF)](https://github.com/jmahotiedu/jmahotiedu.github.io/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
 
 ---
 
@@ -125,10 +125,10 @@ Relevant coursework: Embedded Digital Systems, Advanced Embedded Systems, DSP, A
 
 ## Resumes
 
-- [Backend / Full-Stack (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
-- [Data Engineer (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf)
-- [.NET / Industrial (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_DotNet_Industrial_Resume.pdf)
-- [Embedded (PDF)](https://github.com/jmahotiedu/jmahotiedu/raw/main/resumes/Jared_Mahotiere_Embedded_Resume.pdf)
+- [Backend / Full-Stack (PDF)](https://github.com/jmahotiedu/jmahotiedu.github.io/raw/main/resumes/Jared_Mahotiere_Backend_Resume.pdf)
+- [Data Engineer (PDF)](https://github.com/jmahotiedu/jmahotiedu.github.io/raw/main/resumes/Jared_Mahotiere_Data_Engineer_Resume.pdf)
+- [.NET / Industrial (PDF)](https://github.com/jmahotiedu/jmahotiedu.github.io/raw/main/resumes/Jared_Mahotiere_DotNet_Industrial_Resume.pdf)
+- [Embedded (PDF)](https://github.com/jmahotiedu/jmahotiedu.github.io/raw/main/resumes/Jared_Mahotiere_Embedded_Resume.pdf)
 
 ---
 
