@@ -90,7 +90,6 @@ Darlington, SC | May--Aug 2024, May--Aug 2025
 | **sipeed/picoclaw** | [#213](https://github.com/sipeed/picoclaw/pull/213) | Provider protocol-family refactor with compatibility adapters and expanded test coverage (+1,484/-676 across 11 files) |
 | **sipeed/picoclaw** | [#56](https://github.com/sipeed/picoclaw/pull/56) | Device-code auth interval parsing fix with targeted regression tests |
 | **google/langextract** | [#359](https://github.com/google/langextract/pull/359) | Stabilized cache-key hashing for Enum/dataclass serialization in batch processing |
-
 ### Open
 
 | Repo | PR | Summary |
@@ -99,7 +98,6 @@ Darlington, SC | May--Aug 2024, May--Aug 2025
 | **bloomberg/comdb2** | [#5731](https://github.com/bloomberg/comdb2/pull/5731) | JDBC metadata cursor isolation fix preventing iterator invalidation in getTables() |
 | **databricks/cli** | [#4504](https://github.com/databricks/cli/pull/4504) | Fixed non-bundle auth resolution for workspace commands with regression tests |
 | **databricks/databricks-sdk-py** | [#1258](https://github.com/databricks/databricks-sdk-py/pull/1258) | Config subclass attribute discovery fix for inherited ConfigAttribute fields |
-| **sipeed/picoclaw** | [#211](https://github.com/sipeed/picoclaw/pull/211) | Security hardening and CI reliability improvements (+285/-22) |
 
 ---
 
